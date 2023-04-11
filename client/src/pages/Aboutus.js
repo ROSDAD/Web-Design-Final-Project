@@ -7,11 +7,17 @@ import image3 from '../images/carousel-image-2.jpg';
 import image2 from '../images/carousel-image-3.jpg';
 import "bootstrap";
 import 'bootstrap/dist/css/bootstrap.css';
-import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
-import LandingPage from './LandingPage';
+import { Navigate, useNavigate } from "react-router-dom";
 
 function Aboutus() {
+
+  const navigate = useNavigate();
+
+  function handleClick() {
+    navigate('/login');
+  }
+
+
   let cardItems = [
     {
       description: " Practo is an online health platform that connects patients with doctors and healthcare providers. With Practo, patients can book appointments with doctors, view doctor profiles, read patient reviews, and get information about the healthcare facilities available in their area. Practo also offers online services, allowing patients to consult with doctors from the comfort of their own homes. Overall, Practo aims to make healthcare more accessible and convenient for patients.",
@@ -60,7 +66,7 @@ function Aboutus() {
     <>
 
       <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: '#08e4ff' }}>
-        <a href="#" className="navbar-brand mx-5">
+        <a href="/mainPage" className="navbar-brand mx-5">
           Practo
         </a>
         <button className="navbar-toggler mx-3" type="button" data-bs-toggle="collapse"
@@ -82,7 +88,7 @@ function Aboutus() {
               </li>
             </ul>
             <a className="nav-link p-sm-2" href="/subscription">Sign Up</a>
-            <button className="btn btn-primary mx-sm-3 mt-3 mt-sm-0 login-btn">
+            <button className="btn btn-primary mx-sm-3 mt-3 mt-sm-0 login-btn" onClick={handleClick}>
               Login
             </button>
           </div>

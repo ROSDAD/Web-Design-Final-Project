@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from "react-router-dom";
 
 
 function Subscription() {
@@ -9,7 +9,9 @@ function Subscription() {
     const [name, setName] = useState('');
     const [isValid, setIsValid] = useState(false);
 
-
+    function handleClick() {
+        navigate('/login');
+    }
 
     const [email, setEmail] = useState("");
     const [emailValid, setEmailValid] = useState(false);
@@ -111,7 +113,7 @@ function Subscription() {
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: '#08e4ff' }}>
-                <a href="#" className="navbar-brand mx-5">
+                <a href="/mainPage" className="navbar-brand mx-5">
                     Practo
                 </a>
                 <button className="navbar-toggler mx-3" type="button" data-bs-toggle="collapse"
@@ -133,7 +135,7 @@ function Subscription() {
                             </li>
                         </ul>
                         <a className="nav-link p-sm-2" href="/subscription">Sign Up</a>
-                        <button className="btn btn-primary mx-sm-3 mt-3 mt-sm-0 login-btn">
+                        <button className="btn btn-primary mx-sm-3 mt-3 mt-sm-0 login-btn" onClick={handleClick}>
                             Login
                         </button>
                     </div>
