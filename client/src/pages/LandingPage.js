@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Carousel } from 'react-bootstrap';
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function LandingPage() {
+
+    const { user } = useSelector((state) => state.user);
+
     return (
+
         <div>
             <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: '#08e4ff' }}>
                 <a href="#" className="navbar-brand mx-5">
@@ -17,16 +23,16 @@ function LandingPage() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mx-auto">
                             <li className="nav-item">
-                                <a className="nav-link navactive" href="./index.html">Home</a>
+                                <a className="nav-link navactive" href="/mainPage">Home</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="./subscribe.html">Subscribe</a>
+                                <a className="nav-link" href="/subscription">Subscription</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Contact Us</a>
+                                <a className="nav-link" href="/aboutus">About Us</a>
                             </li>
                         </ul>
-                        <a className="nav-link p-sm-2" href="#">Sign Up</a>
+                        <a className="nav-link p-sm-2" href="/subscription">Sign Up</a>
                         <button className="btn btn-primary mx-sm-3 mt-3 mt-sm-0 login-btn">
                             Login
                         </button>
@@ -149,6 +155,7 @@ function LandingPage() {
                     </div>
                 </div>
             </section>
+
 
             <br />
             <br />
@@ -436,9 +443,9 @@ function LandingPage() {
                 </div>
             </div>
 
-            <br/>
-            <br/>
-            <br/>
+            <br />
+            <br />
+            <br />
             <div class="row container-fluid justify-content-evenly mt-9" id="footer">
                 <div class="col-lg-3">
                     <h2 class="navbar-brand">Practo</h2>

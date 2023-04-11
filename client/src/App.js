@@ -19,6 +19,7 @@ import Profile from "./pages/Doctor/Profile";
 import BookAppointment from "./pages/BookAppointment";
 import Appointments from "./pages/Appointments";
 import DoctorAppointments from "./pages/Doctor/DoctorAppointments";
+import Aboutus from "./pages/Aboutus";
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -45,6 +46,14 @@ function App() {
           element={
             <PublicRoute>
               <LandingPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/aboutus"
+          element={
+            <PublicRoute>
+              <Aboutus/>
             </PublicRoute>
           }
         />

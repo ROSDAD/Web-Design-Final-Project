@@ -9,8 +9,7 @@ import { hideLoading, showLoading } from "../redux/alertsSlice";
 function Register() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const loc = window.location.pathname;
-  // console.log(loc)
+
   const onFinish = async (values) => {
     try {
       dispatch(showLoading());

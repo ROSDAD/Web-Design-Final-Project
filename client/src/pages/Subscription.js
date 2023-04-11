@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
+
 function Subscription() {
 
     const navigate = useNavigate();
@@ -21,7 +22,6 @@ function Subscription() {
     const [address1Valid, setAddress1Valid] = useState(false);
 
     const [formData, setFormData] = useState({});
-
 
     function handleAddress1Change(event) {
         const value = event.target.value;
@@ -123,16 +123,16 @@ function Subscription() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mx-auto">
                             <li className="nav-item">
-                                <a className="nav-link navactive" href="./index.html">Home</a>
+                                <a className="nav-link navactive" href="/mainPage">Home</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="./subscribe.html">Subscribe</a>
+                                <a className="nav-link" href="/subscription">Subscription</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Contact Us</a>
+                                <a className="nav-link" href="/aboutus">About Us</a>
                             </li>
                         </ul>
-                        <a className="nav-link p-sm-2" href="#">Sign Up</a>
+                        <a className="nav-link p-sm-2" href="/subscription">Sign Up</a>
                         <button className="btn btn-primary mx-sm-3 mt-3 mt-sm-0 login-btn">
                             Login
                         </button>
@@ -174,9 +174,7 @@ function Subscription() {
                                     onChange={handleEmailChange}
                                     required
                                 />
-                                <div className="valid-feedback">
-                                    Looks good!
-                                </div>
+                                <div className="valid-feedback">Looks good!</div>
                                 <div className="invalid-feedback">
                                     Please enter name in format: name@example.com
                                 </div>
