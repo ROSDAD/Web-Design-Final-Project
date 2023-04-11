@@ -39,12 +39,17 @@ function Login() {
           <Form.Item label="Password" name="password">
             <Input placeholder="Password" type="password" />
           </Form.Item>
-       
+
+          
           <Button className="primary-button my-2 full-width-button" htmlType="submit">
             Login
           </Button>
+          
+          {/* <Link to="/register" className="anchor mt-2">
+            Click to Register
+          </Link> */}
 
-          <Link to="/register" className="anchor mt-2">
+          <Link to="/subscription" className="anchor mt-2">
             Click to Register
           </Link>
          
