@@ -10,21 +10,22 @@ const moment = require("moment");
 
 router.post("/register", async (req, res) => {
   try {
-    const userExists = await User.findOne({ email: req.body.email });
+    const userExists = await User.findOne({ email: req.body.bodydata.email });
     if (userExists) {
       return res
         .status(200)
         .send({ message: "User already exists", success: false });
     }
-    const password = req.body.password;
+    const password = req.body.bodydata.password;
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
-    req.body.password = hashedPassword;
-    const newuser = new User(req.body);
+    req.body.bodydata.password = hashedPassword;
+    // req.body = {name:req.body[0],email:req.body[1],password:req.body[2],phone:req.body[3],gender:req.body[4],address:req.body[6],city:req.body[7],zipcode:req.body[8],group:req.body[9],type:req.body[10]};
+    const newuser = new User(req.body.bodydata);
     await newuser.save();
     res
       .status(200)
-      .send({ message: "User created successfully", success: true });
+      .send({ message: "User Created Successfully", success: true });
   } catch (error) {
     console.log(error);
     res

@@ -1,17 +1,26 @@
-import React, { useState } from 'react'
-import { Link, Navigate, useNavigate } from "react-router-dom";
 
+import React, { createContext, useState, useContext } from "react";
+import { useNavigate } from 'react-router-dom';
+import { AppContext } from "../components/AppContext";
+import Password from "antd/lib/input/Password";
+import { Link } from "react-router-dom";
 
 function Subscription() {
-
+    const { global_temp, updateMyVariable } = useContext(AppContext);
     const navigate = useNavigate();
+
+    const [password, setPassword] = useState("");
+    const [passwordValid, setPasswordValid] = useState(false);
+
+    const [confirmPassword, setConfirmPassword] = useState("");
+    // const [cnfPasswordValid, setcnfPasswordValid] = useState(false);
+    const [passwordsMatch, setPasswordsMatch] = useState(false);
+
 
     const [name, setName] = useState('');
     const [isValid, setIsValid] = useState(false);
 
-    function handleClick() {
-        navigate('/login');
-    }
+
 
     const [email, setEmail] = useState("");
     const [emailValid, setEmailValid] = useState(false);
@@ -25,6 +34,7 @@ function Subscription() {
 
     const [formData, setFormData] = useState({});
 
+
     function handleAddress1Change(event) {
         const value = event.target.value;
         setAddress1(value);
@@ -34,6 +44,10 @@ function Subscription() {
         } else {
             setAddress1Valid(false);
         }
+    }
+
+    function handleClick() {
+        navigate("/login");
     }
 
     const [zipcode, setZipcode] = useState('');
@@ -75,6 +89,30 @@ function Subscription() {
         setEmail(inputEmail);
         setEmailValid(emailRegex.test(inputEmail));
     };
+    const handlePasswordChange = (event) => {
+        const inputPassword = event.target.value;
+        setPassword(event.target.value);
+        const PasswordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_\-+={}[\]\\|:;"'<>,.?/~])(?!.*\s).{8,}$/
+            ;
+        setPasswordValid(PasswordRegex.test(inputPassword));
+        if (event.target.value === confirmPassword) {
+            setPasswordsMatch(true);
+        } else {
+            setPasswordsMatch(false);
+        }
+        console.log(inputPassword);
+    };
+
+    const handlecnfPasswordChange = (event) => {
+        const inputcnfPassword = event.target.value;
+        setConfirmPassword(event.target.value);
+        if (event.target.value === password) {
+            setPasswordsMatch(true);
+        } else {
+            setPasswordsMatch(false);
+        }
+    };
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -82,6 +120,7 @@ function Subscription() {
         const data = new FormData(event.target);
         const name = data.get("name");
         const emailAddress = data.get("emailAddress");
+        const password = data.get("password");
         const phoneNumber = data.get("phoneNumber");
         const sex = data.get("sex");
         const role = data.get("role");
@@ -90,7 +129,8 @@ function Subscription() {
         const zipcode = data.get("zipcode");
         const subscriptionType = data.get("subscriptionType");
         const subscriptionPlan = data.get("subscriptionPlan");
-
+        console.log(global_temp);
+        updateMyVariable([name, emailAddress, password, phoneNumber, sex, role, address, city, zipcode, subscriptionType, subscriptionPlan]);
         navigate("/payment", { state: { name, emailAddress, phoneNumber, sex, role, address, city, zipcode, subscriptionType, subscriptionPlan } });
     };
 
@@ -142,6 +182,7 @@ function Subscription() {
                 </div>
             </nav>
 
+
             <main>
                 <div className="row justify-content-center my-5 form-container">
                     <div className="col-10 col-sm-6">
@@ -176,9 +217,49 @@ function Subscription() {
                                     onChange={handleEmailChange}
                                     required
                                 />
-                                <div className="valid-feedback">Looks good!</div>
+                                <div className="valid-feedback">
+                                    Looks good!
+                                </div>
                                 <div className="invalid-feedback">
                                     Please enter name in format: name@example.com
+                                </div>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="password">Password*</label>
+                                <input
+                                    type="password"
+                                    className={`form-control ${passwordValid ? 'is-valid' : 'is-invalid'}`}
+                                    id="password"
+                                    name='password'
+
+                                    value={password}
+                                    onChange={handlePasswordChange}
+                                    required
+                                />
+                                <div className="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div className="invalid-feedback">
+                                    Please enter Password
+                                </div>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="cnfPassword">Confirm Password*</label>
+                                <input
+                                    type="password"
+                                    className={`form-control ${passwordsMatch ? 'is-valid' : 'is-invalid'}`}
+                                    id="cnfPassword"
+                                    name='cnfPassword'
+
+                                    value={confirmPassword}
+                                    onChange={handlecnfPasswordChange}
+                                    required
+                                />
+                                <div className="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div className="invalid-feedback">
+                                    Please match the password
                                 </div>
                             </div>
                             <div className="form-group">

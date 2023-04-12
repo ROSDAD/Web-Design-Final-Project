@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Carousel } from 'react-bootstrap';
+import { Carousel,Card } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";

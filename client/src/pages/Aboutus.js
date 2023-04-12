@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from 'react-bootstrap/Card';
+import { Card } from 'react-bootstrap';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 
 import image4 from '../images/carousel-image-1.jpg';
