@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import Login from "./pages/Login";
@@ -19,11 +19,20 @@ import Profile from "./pages/Doctor/Profile";
 import BookAppointment from "./pages/BookAppointment";
 import Appointments from "./pages/Appointments";
 import DoctorAppointments from "./pages/Doctor/DoctorAppointments";
+import Completion from "./pages/Completion";
+import { AppContext } from "./components/AppContext";
 import Aboutus from "./pages/Aboutus";
-
 function App() {
   const { loading } = useSelector((state) => state.alerts);
+  
+  const [global_temp, setMyVariable] = useState([]);
+  console.log("in APP.jS")
+  // console.log(global_temp_var);
+  const updateMyVariable = (newValue) => {
+    setMyVariable(newValue);
+  };
   return (
+    <AppContext.Provider value={{ global_temp, updateMyVariable }}>
     <BrowserRouter>
       {loading && (
         <div className="spinner-parent">
@@ -159,6 +168,7 @@ function App() {
         />
       </Routes>
     </BrowserRouter>
+    </AppContext.Provider>
   );
 }
 
