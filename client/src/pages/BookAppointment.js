@@ -1,5 +1,5 @@
 import { Button, Col, DatePicker, Form, Input, Row, TimePicker } from "antd";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Layout from "../components/Layout";
 import { useDispatch, useSelector } from "react-redux";
 import { showLoading, hideLoading } from "../redux/alertsSlice";
@@ -71,6 +71,7 @@ function BookAppointment() {
       dispatch(hideLoading());
     }
   };
+
   const bookNow = async () => {
     setIsAvailable(false);
     try {
@@ -94,7 +95,6 @@ function BookAppointment() {
 
       dispatch(hideLoading());
       if (response.data.success) {
-        
         toast.success(response.data.message);
         navigate('/appointments')
       }
@@ -161,7 +161,7 @@ function BookAppointment() {
                     setTime(moment(value).format("HH:mm"));
                   }}
                 />
-              {!isAvailable &&   <Button
+                {!isAvailable && <Button
                   className="primary-button mt-3 full-width-button"
                   onClick={checkAvailability}
                 >
@@ -178,7 +178,12 @@ function BookAppointment() {
                 )}
               </div>
             </Col>
-           
+            <Col>
+            
+
+            
+            </Col>
+
           </Row>
         </div>
       )}

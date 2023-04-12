@@ -5,10 +5,14 @@ import { Col, Row } from "antd";
 import Doctor from "../components/Doctor";
 import { useDispatch, useSelector } from "react-redux";
 import { showLoading, hideLoading } from "../redux/alertsSlice";
+
 function Home() {
+
   const [doctors, setDoctors] = useState([]);
   const dispatch = useDispatch();
+
   const getData = async () => {
+
     try {
       dispatch(showLoading())
       const response = await axios.get("/api/user/get-all-approved-doctors", {
@@ -23,6 +27,7 @@ function Home() {
     } catch (error) {
       dispatch(hideLoading())
     }
+    
   };
 
   useEffect(() => {

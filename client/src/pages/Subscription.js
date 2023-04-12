@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 
 function Subscription() {
@@ -113,9 +113,9 @@ function Subscription() {
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: '#08e4ff' }}>
-                <a href="/mainPage" className="navbar-brand mx-5">
+                <Link className="anchor mx-2" to="/mainPage">
                     Practo
-                </a>
+                </Link>
                 <button className="navbar-toggler mx-3" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -125,16 +125,16 @@ function Subscription() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mx-auto">
                             <li className="nav-item">
-                                <a className="nav-link navactive" href="/mainPage">Home</a>
+                                <Link className="anchor mx-2" to="/mainPage">Home</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/subscription">Subscription</a>
+                                <Link className="anchor mx-2" to="/subscription">Subscription</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/aboutus">About Us</a>
+                                <Link className="anchor mx-2" to="/aboutus">About Us</Link>
                             </li>
                         </ul>
-                        <a className="nav-link p-sm-2" href="/subscription">Sign Up</a>
+                        <Link className="anchor mx-2" to="/subscription">Sign Up</Link>
                         <button className="btn btn-primary mx-sm-3 mt-3 mt-sm-0 login-btn" onClick={handleClick}>
                             Login
                         </button>
@@ -427,16 +427,16 @@ function Subscription() {
                         <li className="list-group-item">Personal Plan
                             <br />
                             <ul className="list-group">
-                                <li className="list-group-item " ><a href="./subscribe.html">Bronze</a></li>
-                                <li className="list-group-item"><a href="./subscribe.html">Gold</a></li>
-                                <li className="list-group-item"><a href="./subscribe.html">Diamond</a></li>
-                                <li className="list-group-item"><a href="./subscribe.html">Platinum</a></li>
+                                <li className="list-group-item " ><Link className="anchor mx-2" to="/subscription">Bronze</Link></li>
+                                <li className="list-group-item"><Link className="anchor mx-2" to="/subscription">Gold</Link></li>
+                                <li className="list-group-item"><Link className="anchor mx-2" to="/subscription">Diamond</Link></li>
+                                <li className="list-group-item"><Link className="anchor mx-2" to="/subscription">Platinum</Link></li>
                             </ul>
                         </li>
                         <li className="list-group-item">Family Plan
                             <ul className="list-group">
-                                <li className="list-group-item"><a href="./subscribe.html">Basic</a></li>
-                                <li className="list-group-item"><a href="./subscribe.html">Premium</a></li>
+                                <li className="list-group-item"><Link className="anchor mx-2" to="/subscription">Basic</Link></li>
+                                <li className="list-group-item"><Link className="anchor mx-2" to="/subscription">Premium</Link></li>
                             </ul>
                         </li>
                     </ul>
@@ -445,12 +445,12 @@ function Subscription() {
                     <h2>Useful Links</h2>
                     <hr />
                     <ul className="list-group">
-                        <li className="list-group-item"><a href="./index.html">Home</a></li>
-                        <li className="list-group-item"><a href="./subscribe.html">Subscribe</a></li>
-                        <li className="list-group-item"><a href="#">Contact Us</a></li>
-                        <li className="list-group-item"><a href="#">Enroll as a Doctor</a></li>
-                        <li className="list-group-item"><a href="#">Login</a></li>
-                        <li className="list-group-item"><a href="#">Signup</a></li>
+                        <li className="list-group-item"><Link className="anchor mx-2" to="/mainPage">Home</Link></li>
+                        <li className="list-group-item"><Link className="anchor mx-2" to="/subscription">Subscribe</Link></li>
+                        <li className="list-group-item"><Link className="anchor mx-2" to="/aboutus">About Us</Link></li>
+                        <li className="list-group-item"><Link className="#">Enroll as a Doctor</Link></li>
+                        <li className="list-group-item"><Link className="anchor mx-2" to="/login">Login</Link></li>
+                        <li className="list-group-item"><Link className="anchor mx-2" to="/subscription">Signup</Link></li>
                     </ul>
                 </div>
                 <div className="col-lg-3">
