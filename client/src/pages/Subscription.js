@@ -3,6 +3,8 @@ import React, { createContext, useState, useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from "../components/AppContext";
 import Password from "antd/lib/input/Password";
+import { Link } from "react-router-dom";
+
 function Subscription() {
     const { global_temp, updateMyVariable } = useContext(AppContext);
     const navigate = useNavigate();
@@ -42,6 +44,10 @@ function Subscription() {
         } else {
             setAddress1Valid(false);
         }
+    }
+
+    function handleClick() {
+        navigate("/login");
     }
 
     const [zipcode, setZipcode] = useState('');
@@ -87,25 +93,25 @@ function Subscription() {
         const inputPassword = event.target.value;
         setPassword(event.target.value);
         const PasswordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_\-+={}[\]\\|:;"'<>,.?/~])(?!.*\s).{8,}$/
-        ;
+            ;
         setPasswordValid(PasswordRegex.test(inputPassword));
         if (event.target.value === confirmPassword) {
-          setPasswordsMatch(true);
+            setPasswordsMatch(true);
         } else {
-          setPasswordsMatch(false);
+            setPasswordsMatch(false);
         }
         console.log(inputPassword);
-      };
-    
-      const handlecnfPasswordChange = (event) => {
+    };
+
+    const handlecnfPasswordChange = (event) => {
         const inputcnfPassword = event.target.value;
         setConfirmPassword(event.target.value);
         if (event.target.value === password) {
-          setPasswordsMatch(true);
+            setPasswordsMatch(true);
         } else {
-          setPasswordsMatch(false);
+            setPasswordsMatch(false);
         }
-      };
+    };
 
 
     const handleSubmit = (event) => {
@@ -124,7 +130,7 @@ function Subscription() {
         const subscriptionType = data.get("subscriptionType");
         const subscriptionPlan = data.get("subscriptionPlan");
         console.log(global_temp);
-        updateMyVariable([ name, emailAddress,password, phoneNumber, sex, role, address, city, zipcode, subscriptionType, subscriptionPlan ]);
+        updateMyVariable([name, emailAddress, password, phoneNumber, sex, role, address, city, zipcode, subscriptionType, subscriptionPlan]);
         navigate("/payment", { state: { name, emailAddress, phoneNumber, sex, role, address, city, zipcode, subscriptionType, subscriptionPlan } });
     };
 
@@ -147,9 +153,9 @@ function Subscription() {
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: '#08e4ff' }}>
-                <a href="#" className="navbar-brand mx-5">
+                <Link className="anchor mx-2" to="/mainPage">
                     Practo
-                </a>
+                </Link>
                 <button className="navbar-toggler mx-3" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -159,22 +165,23 @@ function Subscription() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mx-auto">
                             <li className="nav-item">
-                                <a className="nav-link navactive" href="./index.html">Home</a>
+                                <Link className="anchor mx-2" to="/mainPage">Home</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="./subscribe.html">Subscribe</a>
+                                <Link className="anchor mx-2" to="/subscription">Subscription</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Contact Us</a>
+                                <Link className="anchor mx-2" to="/aboutus">About Us</Link>
                             </li>
                         </ul>
-                        <a className="nav-link p-sm-2" href="#">Sign Up</a>
-                        <button className="btn btn-primary mx-sm-3 mt-3 mt-sm-0 login-btn">
+                        <Link className="anchor mx-2" to="/subscription">Sign Up</Link>
+                        <button className="btn btn-primary mx-sm-3 mt-3 mt-sm-0 login-btn" onClick={handleClick}>
                             Login
                         </button>
                     </div>
                 </div>
             </nav>
+
 
             <main>
                 <div className="row justify-content-center my-5 form-container">
@@ -224,7 +231,7 @@ function Subscription() {
                                     className={`form-control ${passwordValid ? 'is-valid' : 'is-invalid'}`}
                                     id="password"
                                     name='password'
-                                   
+
                                     value={password}
                                     onChange={handlePasswordChange}
                                     required
@@ -243,7 +250,7 @@ function Subscription() {
                                     className={`form-control ${passwordsMatch ? 'is-valid' : 'is-invalid'}`}
                                     id="cnfPassword"
                                     name='cnfPassword'
-                                   
+
                                     value={confirmPassword}
                                     onChange={handlecnfPasswordChange}
                                     required
@@ -501,16 +508,16 @@ function Subscription() {
                         <li className="list-group-item">Personal Plan
                             <br />
                             <ul className="list-group">
-                                <li className="list-group-item " ><a href="./subscribe.html">Bronze</a></li>
-                                <li className="list-group-item"><a href="./subscribe.html">Gold</a></li>
-                                <li className="list-group-item"><a href="./subscribe.html">Diamond</a></li>
-                                <li className="list-group-item"><a href="./subscribe.html">Platinum</a></li>
+                                <li className="list-group-item " ><Link className="anchor mx-2" to="/subscription">Bronze</Link></li>
+                                <li className="list-group-item"><Link className="anchor mx-2" to="/subscription">Gold</Link></li>
+                                <li className="list-group-item"><Link className="anchor mx-2" to="/subscription">Diamond</Link></li>
+                                <li className="list-group-item"><Link className="anchor mx-2" to="/subscription">Platinum</Link></li>
                             </ul>
                         </li>
                         <li className="list-group-item">Family Plan
                             <ul className="list-group">
-                                <li className="list-group-item"><a href="./subscribe.html">Basic</a></li>
-                                <li className="list-group-item"><a href="./subscribe.html">Premium</a></li>
+                                <li className="list-group-item"><Link className="anchor mx-2" to="/subscription">Basic</Link></li>
+                                <li className="list-group-item"><Link className="anchor mx-2" to="/subscription">Premium</Link></li>
                             </ul>
                         </li>
                     </ul>
@@ -519,12 +526,12 @@ function Subscription() {
                     <h2>Useful Links</h2>
                     <hr />
                     <ul className="list-group">
-                        <li className="list-group-item"><a href="./index.html">Home</a></li>
-                        <li className="list-group-item"><a href="./subscribe.html">Subscribe</a></li>
-                        <li className="list-group-item"><a href="#">Contact Us</a></li>
-                        <li className="list-group-item"><a href="#">Enroll as a Doctor</a></li>
-                        <li className="list-group-item"><a href="#">Login</a></li>
-                        <li className="list-group-item"><a href="#">Signup</a></li>
+                        <li className="list-group-item"><Link className="anchor mx-2" to="/mainPage">Home</Link></li>
+                        <li className="list-group-item"><Link className="anchor mx-2" to="/subscription">Subscribe</Link></li>
+                        <li className="list-group-item"><Link className="anchor mx-2" to="/aboutus">About Us</Link></li>
+                        <li className="list-group-item"><Link className="#">Enroll as a Doctor</Link></li>
+                        <li className="list-group-item"><Link className="anchor mx-2" to="/login">Login</Link></li>
+                        <li className="list-group-item"><Link className="anchor mx-2" to="/subscription">Signup</Link></li>
                     </ul>
                 </div>
                 <div className="col-lg-3">

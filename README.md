@@ -1,14 +1,12 @@
 ## MERN Stack Doctor Appointment Booking App
 
-MERN Stack Doctor Appointment Booking Application using React , Redux Toolkit , AntD , Node , MongoDB 
+MERN Stack Doctor Appointment Booking Application using React , Redux Toolkit, Node , MongoDB, Express 
 
 ## Features :
 
 Separate User Interfaces for Users, Admins, Doctors
 
 JWT Authentication and Password Hashing
-
-Ant Design Library for UI Components,
 
 Redux Toolkit,
 

@@ -18,9 +18,9 @@ function LandingPage() {
 
         <div>
             <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: '#08e4ff' }}>
-                <a href="/mainPage" className="navbar-brand mx-5">
+                <Link className="anchor mx-2" to="/mainPage">
                     Practo
-                </a>
+                </Link>
                 <button className="navbar-toggler mx-3" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -30,16 +30,16 @@ function LandingPage() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mx-auto">
                             <li className="nav-item">
-                                <a className="nav-link navactive" href="/mainPage">Home</a>
+                                <Link className="anchor mx-2" to="/mainPage">Home</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/subscription">Subscription</a>
+                                <Link className="anchor mx-2" to="/subscription">Subscription</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/aboutus">About Us</a>
+                                <Link className="anchor mx-2" to="/aboutus">About Us</Link>
                             </li>
                         </ul>
-                        <a className="nav-link p-sm-2" href="/subscription">Sign Up</a>
+                        <Link className="anchor mx-2" to="/subscription">Sign Up</Link>
                         <button className="btn btn-primary mx-sm-3 mt-3 mt-sm-0 login-btn" onClick={handleClick}>
                             Login
                         </button>
@@ -190,8 +190,8 @@ function LandingPage() {
                                     <h5 class="card-title">Bronze</h5>
                                     <p class="my-0"><span class="membership-price ">$5</span>/mo</p>
                                     <p>Billed Anually</p>
-                                    <a href="./subscribe.html"><button type="button"
-                                        class="btn btn-outline-primary w-100 py-2">Subscribe</button></a>
+                                    <Link className="anchor mx-2" to="/subscription"><button type="button"
+                                        class="btn btn-outline-primary w-100 py-2">Subscribe</button></Link>
                                 </div>
                                 <hr />
                                 <div class="card-body">
@@ -215,8 +215,8 @@ function LandingPage() {
                                     <h5 class="card-title">Gold</h5>
                                     <p class="my-0"><span class="membership-price ">$10</span>/mo</p>
                                     <p>Billed Anually</p>
-                                    <a href="./subscribe.html"><button type="button"
-                                        class="btn btn-outline-primary w-100 py-2">Subscribe</button></a>
+                                    <Link className="anchor mx-2" to="/subscription"><button type="button"
+                                        class="btn btn-outline-primary w-100 py-2">Subscribe</button></Link>
                                 </div>
                                 <hr />
                                 <div class="card-body">
@@ -264,8 +264,8 @@ function LandingPage() {
                                     <h5 class="card-title">Platinum <span class="badge badge-primary">Popular</span></h5>
                                     <p class="my-0"><span class="membership-price ">$20</span>/mo</p>
                                     <p>Billed Anually</p>
-                                    <a href="./subscribe.html"><button type="button"
-                                        class="btn btn-outline-primary w-100 py-2">Subscribe</button></a>
+                                    <Link className="anchor mx-2" to="/subscription"><button type="button"
+                                        class="btn btn-outline-primary w-100 py-2">Subscribe</button></Link>
                                 </div>
                                 <hr />
                                 <div class="card-body">
@@ -293,8 +293,8 @@ function LandingPage() {
                                     <h5 class="card-title">Basic</h5>
                                     <p class="my-0"><span class="membership-price ">$5</span>/mo</p>
                                     <p>Billed Anually</p>
-                                    <a href="./subscribe.html"><button type="button"
-                                        class="btn btn-outline-primary w-100 py-2">Subscribe</button></a>
+                                    <Link className="anchor mx-2" to="/subscription"><button type="button"
+                                        class="btn btn-outline-primary w-100 py-2">Subscribe</button></Link>
                                 </div>
                                 <hr />
                                 <div class="card-body">
@@ -318,8 +318,8 @@ function LandingPage() {
                                     <h5 class="card-title">Premium</h5>
                                     <p class="my-0"><span class="membership-price ">$10</span>/mo</p>
                                     <p>Billed Anually</p>
-                                    <a href="./subscribe.html"><button type="button"
-                                        class="btn btn-outline-primary w-100 py-2">Subscribe</button></a>
+                                    <Link className="anchor mx-2" to="/subscription"><button type="button"
+                                        class="btn btn-outline-primary w-100 py-2">Subscribe</button></Link>
                                 </div>
                                 <hr />
                                 <div class="card-body">
@@ -453,81 +453,81 @@ function LandingPage() {
             <br />
             <br />
             <br />
-            <div class="row container-fluid justify-content-evenly mt-9" id="footer">
-                <div class="col-lg-3">
-                    <h2 class="navbar-brand">Practo</h2>
+            <div className="row container-fluid justify-content-evenly mt-9" id="footer">
+                <div className="col-lg-3">
+                    <h2 className="navbar-brand">Practo</h2>
                     <hr />
                     <p>Practo is the distribution of health-related services and information via electronic
                         information and telecommunication technologies. It allows long-distance patient and
                         clinician contact, care, advice, reminders, education, intervention, monitoring, and remote
                         admissions</p>
                 </div>
-                <div class="col-lg-2">
+                <div className="col-lg-2">
                     <h2>Subscriptions</h2>
                     <hr />
-                    <ul class="list-group">
-                        <li class="list-group-item">Personal Plan
+                    <ul className="list-group">
+                        <li className="list-group-item">Personal Plan
                             <br />
-                            <ul class="list-group">
-                                <li class="list-group-item " ><a href="./subscribe.html">Bronze</a></li>
-                                <li class="list-group-item"><a href="./subscribe.html">Gold</a></li>
-                                <li class="list-group-item"><a href="./subscribe.html">Diamond</a></li>
-                                <li class="list-group-item"><a href="./subscribe.html">Platinum</a></li>
+                            <ul className="list-group">
+                                <li className="list-group-item " ><Link className="anchor mx-2" to="/subscription">Bronze</Link></li>
+                                <li className="list-group-item"><Link className="anchor mx-2" to="/subscription">Gold</Link></li>
+                                <li className="list-group-item"><Link className="anchor mx-2" to="/subscription">Diamond</Link></li>
+                                <li className="list-group-item"><Link className="anchor mx-2" to="/subscription">Platinum</Link></li>
                             </ul>
                         </li>
-                        <li class="list-group-item">Family Plan
-                            <ul class="list-group">
-                                <li class="list-group-item"><a href="./subscribe.html">Basic</a></li>
-                                <li class="list-group-item"><a href="./subscribe.html">Premium</a></li>
+                        <li className="list-group-item">Family Plan
+                            <ul className="list-group">
+                                <li className="list-group-item"><Link className="anchor mx-2" to="/subscription">Basic</Link></li>
+                                <li className="list-group-item"><Link className="anchor mx-2" to="/subscription">Premium</Link></li>
                             </ul>
                         </li>
                     </ul>
                 </div>
-                <div class="col-lg-2">
+                <div className="col-lg-2">
                     <h2>Useful Links</h2>
                     <hr />
-                    <ul class="list-group">
-                        <li class="list-group-item"><a href="./index.html">Home</a></li>
-                        <li class="list-group-item"><a href="./subscribe.html">Subscribe</a></li>
-                        <li class="list-group-item"><a href="#">Contact Us</a></li>
-                        <li class="list-group-item"><a href="#">Enroll as a Doctor</a></li>
-                        <li class="list-group-item"><a href="#">Login</a></li>
-                        <li class="list-group-item"><a href="#">Signup</a></li>
+                    <ul className="list-group">
+                        <li className="list-group-item"><Link className="anchor mx-2" to="/mainPage">Home</Link></li>
+                        <li className="list-group-item"><Link className="anchor mx-2" to="/subscription">Subscribe</Link></li>
+                        <li className="list-group-item"><Link className="anchor mx-2" to="/aboutus">About Us</Link></li>
+                        <li className="list-group-item"><Link className="#">Enroll as a Doctor</Link></li>
+                        <li className="list-group-item"><Link className="anchor mx-2" to="/login">Login</Link></li>
+                        <li className="list-group-item"><Link className="anchor mx-2" to="/subscription">Signup</Link></li>
                     </ul>
                 </div>
-                <div class="col-lg-3">
+                <div className="col-lg-3">
                     <h2>Subscribe to our Newsletter</h2>
                     <hr />
                     <form id="newsletter-form">
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">
+                        <div className="mb-3">
+                            <label htmlFor="exampleInputEmail1" className="form-label">
                                 Email address &nbsp;
-                                <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top"
+                                <button type="button" className="btn btn-secondary" data-toggle="tooltip" data-placement="top"
                                     title="We'll never share your email with anyone else. Email is only used for sending brand new information about our tools and services">
                                     ?
                                 </button>
                             </label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                                 pattern="^[a-zA-Z0-9]+@\\w+.\\w{1,3}$" required />
 
                         </div>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submit-button">
+                        <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submit-button">
                             Submit
                         </button>
-                        <div class="modal fade" id="submit-button" tabindex="-1" aria-labelledby="submit-buttonLabel"
+                        <div className="modal fade" id="submit-button" tabIndex="-1" aria-labelledby="submit-buttonLabel"
                             aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="submit-buttonLabel">News letter</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            <div className="modal-dialog">
+                                <div className="modal-content">
+                                    <div className="modal-header">
+                                        <h1 className="modal-title fs-5" id="submit-buttonLabel">News letter</h1>
+                                        <button type="button" className="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
-                                    <div class="modal-body">
+                                    <div className="modal-body">
                                         Successfully subscribed to our news letter.
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <div className="modal-footer">
+                                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                     </div>
                                 </div>
                             </div>
