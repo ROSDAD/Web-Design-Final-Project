@@ -6,6 +6,7 @@ import { toast } from "react-hot-toast";
 import axios from "axios";
 import { Table } from "antd";
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 function DoctorAppointments() {
   const [appointments, setAppointments] = useState([]);
@@ -105,6 +106,23 @@ function DoctorAppointments() {
         </div>
       ),
     },
+    {title:"Profile",
+  dataIndex:"profile",
+  render: (text, record) => (
+    <div className="d-flex">
+      
+        <div className="d-flex">
+        <Link className="anchor mx-2" to={ "profile/"+ record._id }>
+                    View
+                </Link>
+            
+         
+          
+        </div>
+      
+    </div>
+  ),
+}
   ];
   useEffect(() => {
     getAppointmentsData();

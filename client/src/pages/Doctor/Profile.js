@@ -73,6 +73,7 @@ function Profile() {
   };
 
   useEffect(() => {
+    console.log("In useeggect");
     getDoctorData();
   }, []);
   return (
