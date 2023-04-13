@@ -85,6 +85,7 @@ function BookAppointment() {
           userInfo: user,
           date: date,
           time: time,
+          appointmentInfo:{heartRate:0,bloodPressure:0,temperature:0,weight:0,height:0,note:""}
         },
         {
           headers: {

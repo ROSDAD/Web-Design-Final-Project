@@ -26,7 +26,9 @@ import {
   MDBProgressBar,
   MDBIcon,
   MDBListGroup,
-  MDBListGroupItem
+  MDBListGroupItem,
+  MDBInput,
+  MDBTextArea
 } from 'mdb-react-ui-kit';
 
 function AppointmentForm({ onFinish, initivalValues }) {
@@ -34,6 +36,8 @@ function AppointmentForm({ onFinish, initivalValues }) {
     const params = useParams();
     console.log("top")
     const [appointment, setAppointment] = useState(null);
+    const [appointmentInfo, setAppointmentInfo] = useState({heartRate:0,bloodPressure:0,temperature:0,weight:0,height:0,note:""});
+
 
   const getAppointmentData = () => {
     console.log("inhere");
@@ -53,6 +57,7 @@ function AppointmentForm({ onFinish, initivalValues }) {
         console.log(response.data);
         if (response.data.success) {
           setAppointment(response.data.data[0]);
+          setAppointmentInfo(response.data.data[0].appointmentInfo)
         }
       })
       .catch((error) => {
@@ -64,8 +69,9 @@ function AppointmentForm({ onFinish, initivalValues }) {
     
       getAppointmentData();
     }, [params.appointmentId]);
+    // console.log(appointmentInfo);
+
     
-  
   return (
     
     <section style={{ backgroundColor: '#eee' }}>
@@ -120,31 +126,25 @@ function AppointmentForm({ onFinish, initivalValues }) {
               <MDBCol md="6">
                 <MDBCard className="mb-4 mb-md-0">
                   <MDBCardBody>
-                    <MDBCardText className="mb-4"><span className="text-primary font-italic me-1">assigment</span> Project Status</MDBCardText>
-                    <MDBCardText className="mb-1" style={{ fontSize: '.77rem' }}>Web Design</MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={80} valuemin={0} valuemax={100} />
-                    </MDBProgress>
+                    <form>
+                    <MDBCardText className="mb-4"><span className="text-primary font-italic me-1">Vital Signs</span></MDBCardText>
+                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Heart Rate</MDBCardText>
+                    <MDBInput id='inpHeartRate' min="0" type='number' value={ appointmentInfo && appointmentInfo.heartRate }/>
 
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Website Markup</MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={72} valuemin={0} valuemax={100} />
-                    </MDBProgress>
+                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Blood Pressure</MDBCardText>
+                    <MDBInput id='inpBloodPressure' min="0" type='number' value={ appointmentInfo && appointmentInfo.bloodPressure }/>
 
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>One Page</MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={89} valuemin={0} valuemax={100} />
-                    </MDBProgress>
+                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Temperature</MDBCardText>
+                    <MDBInput id='inpTemperature' min="0" type='number' value={ appointmentInfo && appointmentInfo.temperature }/>
 
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Mobile Template</MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={55} valuemin={0} valuemax={100} />
-                    </MDBProgress>
+                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Weight</MDBCardText>
+                    <MDBInput id='inpWeight' min="0" type='number' value={ appointmentInfo && appointmentInfo.weight }/>
 
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Backend API</MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={66} valuemin={0} valuemax={100} />
-                    </MDBProgress>
+                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Height</MDBCardText>
+                    <MDBInput id='inpHeight' min="0" type='number' value={ appointmentInfo && appointmentInfo.height }/>
+                    <br/>
+                    <MDBBtn type='submit' className='mb-4' block>Update</MDBBtn>
+                    </form>
                   </MDBCardBody>
                 </MDBCard>
               </MDBCol>
@@ -152,31 +152,13 @@ function AppointmentForm({ onFinish, initivalValues }) {
               <MDBCol md="6">
                 <MDBCard className="mb-4 mb-md-0">
                   <MDBCardBody>
-                    <MDBCardText className="mb-4"><span className="text-primary font-italic me-1">assigment</span> Project Status</MDBCardText>
-                    <MDBCardText className="mb-1" style={{ fontSize: '.77rem' }}>Web Design</MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={80} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Website Markup</MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={72} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>One Page</MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={89} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Mobile Template</MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={55} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Backend API</MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={66} valuemin={0} valuemax={100} />
-                    </MDBProgress>
+                    <form >
+                    <MDBCardText className="mb-4"><span className="text-primary font-italic me-1">Prescription</span></MDBCardText>
+                    <MDBCardText className="mb-1" style={{ fontSize: '1.25rem' }}>Note</MDBCardText>
+                    <MDBTextArea  id='textAreaExample'  rows={15}>{ appointmentInfo && appointmentInfo.note }</MDBTextArea>
+                    <br/>
+                    <MDBBtn type='submit' className='mb-4' block>Update</MDBBtn>
+                    </form>
                   </MDBCardBody>
                 </MDBCard>
               </MDBCol>
