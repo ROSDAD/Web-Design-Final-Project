@@ -23,6 +23,7 @@ import Completion from "./pages/Completion";
 import { AppContext } from "./components/AppContext";
 import Aboutus from "./pages/Aboutus";
 import AppointmentsPage from "./pages/AppointmentPage";
+import PatientAppointmentPage from "./pages/PatientAppointmentPage";
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -43,6 +44,14 @@ function App() {
 
         <Toaster position="top-center" reverseOrder={false} />
         <Routes>
+        <Route
+            path="/user/appointments/profile/:appointmentId"
+            element={
+              <ProtectedRoute>
+                <PatientAppointmentPage />
+              </ProtectedRoute>
+            }
+          />
         <Route
             path="/doctor/appointments/profile/:appointmentId"
             element={

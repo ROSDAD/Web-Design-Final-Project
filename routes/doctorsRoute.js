@@ -129,4 +129,30 @@ router.post("/change-appointment-status", authMiddleware, async (req, res) => {
   }
 });
 
+router.post("/update-vitals", authMiddleware, async (req, res) => {
+  try {
+    const { appId, appointmentInfo } = req.body;
+    const appointment = await Appointment.findByIdAndUpdate(appId, {
+      appointmentInfo,
+    });
+
+
+    await appointment.save();
+
+    res.status(200).send({
+      message: "Appointment Information updated successfully",
+      success: true
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      message: "Error changing appointment status",
+      success: false,
+      error,
+    });
+  }
+});
+
+
+
 module.exports = router;
