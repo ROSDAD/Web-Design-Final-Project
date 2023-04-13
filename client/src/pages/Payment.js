@@ -12,8 +12,7 @@ function Payment() {
     const { name, emailAddress, phoneNumber, sex, role, address, city, zipcode, subscriptionType, subscriptionPlan  } = location.state;
     const [stripePromise, setStripePromise] = useState(null);
     const [clientSecret, setClientSecret] = useState("");
-    console.log("In Payment Page");
-    console.log(global_temp);
+
     useEffect(() => {
       fetch("/config").then(async (r) => {
         const { publishableKey } = await r.json();

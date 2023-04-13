@@ -1,7 +1,7 @@
 import { Button, Form, Input } from "antd";
 import React from "react";
 import toast from "react-hot-toast";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { hideLoading, showLoading } from "../redux/alertsSlice";
@@ -10,7 +10,7 @@ function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const onFinish = async (values) => {
-    
+
     try {
       dispatch(showLoading());
       const response = await axios.post("/api/user/login", values);
@@ -33,6 +33,7 @@ function Login() {
       <div className="authentication-form card p-3">
         <h1 className="card-title">Welcome Back</h1>
         <Form layout="vertical" onFinish={onFinish}>
+
           <Form.Item label="Email" name="email">
             <Input placeholder="Email" />
           </Form.Item>
@@ -40,19 +41,15 @@ function Login() {
             <Input placeholder="Password" type="password" />
           </Form.Item>
 
-          
+
           <Button className="primary-button my-2 full-width-button" htmlType="submit">
             Login
           </Button>
-          
-          {/* <Link to="/register" className="anchor mt-2">
-            Click to Register
-          </Link> */}
 
           <Link to="/subscription" className="anchor mt-2">
             Click to Register
           </Link>
-         
+
         </Form>
       </div>
     </div>

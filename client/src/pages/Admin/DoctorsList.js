@@ -30,6 +30,7 @@ function DoctorsList() {
   const changeDoctorStatus = async (record, status) => {
     try {
       dispatch(showLoading());
+      console.log(record)
       const resposne = await axios.post(
         "/api/admin/change-doctor-account-status",
         { doctorId: record._id, userId: record.userId, status: status },

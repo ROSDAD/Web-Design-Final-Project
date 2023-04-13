@@ -46,17 +46,25 @@ router.post(
   async (req, res) => {
     try {
       const { doctorId, status } = req.body;
+      console.log(status)
+      console.log(doctorId)
+
       const doctor = await Doctor.findByIdAndUpdate(doctorId, {
         status,
       });
 
-      const user = await User.findOne({ _id: doctor.userId });
+      console.log(doctor)
+      
+      const user = await User.findOne({ userId: doctor.userId });
+
       const unseenNotifications = user.unseenNotifications;
+
       unseenNotifications.push({
         type: "new-doctor-request-changed",
         message: `Your doctor account has been ${status}`,
         onClickPath: "/notifications",
       });
+      
       user.isDoctor = status === "approved" ? true : false;
       await user.save();
 
