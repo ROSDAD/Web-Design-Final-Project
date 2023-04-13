@@ -9,6 +9,10 @@ import { hideLoading, showLoading } from "../redux/alertsSlice";
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  function handleClick() {
+    navigate("/login");
+  }
   const onFinish = async (values) => {
 
     try {
@@ -29,28 +33,63 @@ function Login() {
   };
 
   return (
-    <div className="authentication">
-      <div className="authentication-form card p-3">
-        <h1 className="card-title">Welcome Back</h1>
-        <Form layout="vertical" onFinish={onFinish}>
+    <div>
+      <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: '#08e4ff' }}>
+        <Link className="anchor mx-2" to="/mainPage">
+          Practo
+        </Link>
+        <button className="navbar-toggler mx-3" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="navbar-collapse">
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav mx-auto">
+              <li className="nav-item">
+                <Link className="anchor mx-2" to="/mainPage">Home</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="anchor mx-2" to="/subscription">Subscription</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="anchor mx-2" to="/aboutus">About Us</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="anchor mx-2" to="/doctorForm">Apply as a doctor</Link>
+              </li>
+            </ul>
+            <Link className="anchor mx-2" to="/subscription">Sign Up</Link>
+            {/* <button className="btn btn-primary mx-sm-3 mt-3 mt-sm-0 login-btn" onClick={handleClick}>
+          Login
+        </button> */}
+          </div>
+        </div>
+      </nav>
+      <div className="authentication">
 
-          <Form.Item label="Email" name="email">
-            <Input placeholder="Email" />
-          </Form.Item>
-          <Form.Item label="Password" name="password">
-            <Input placeholder="Password" type="password" />
-          </Form.Item>
+        <div className="authentication-form card p-3">
+          <h1 className="card-title">Welcome Back</h1>
+          <Form layout="vertical" onFinish={onFinish}>
+
+            <Form.Item label="Email" name="email">
+              <Input placeholder="Email" />
+            </Form.Item>
+            <Form.Item label="Password" name="password">
+              <Input placeholder="Password" type="password" />
+            </Form.Item>
 
 
-          <Button className="primary-button my-2 full-width-button" htmlType="submit">
-            Login
-          </Button>
+            <Button className="primary-button my-2 full-width-button" htmlType="submit">
+              Login
+            </Button>
 
-          <Link to="/subscription" className="anchor mt-2">
-            Click to Register
-          </Link>
+            <Link to="/subscription" className="anchor mt-2">
+              Click to Register
+            </Link>
 
-        </Form>
+          </Form>
+        </div>
       </div>
     </div>
   );

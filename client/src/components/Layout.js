@@ -25,11 +25,6 @@ function Layout({ children }) {
 
   const doctorMenu = [
     {
-      name: "Home",
-      path: "/",
-      icon: "ri-home-line",
-    },
-    {
       name: "Appointments",
       path: "/doctor/appointments",
       icon: "ri-file-list-line",
@@ -72,7 +67,9 @@ function Layout({ children }) {
       <div className="d-flex layout">
         <div className="sidebar">
           <div className="sidebar-header">
-            <h1 className="logo">SH</h1>
+            <h1 className="logo">Practo</h1>
+            <hr/>
+            <br/>
             <h1 className="role">{role}</h1>
           </div>
 
@@ -104,6 +101,7 @@ function Layout({ children }) {
         </div>
 
         <div className="content">
+          <div>Number of appointments </div>
           <div className="header">
             {collapsed ? (
               <i

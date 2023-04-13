@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Carousel,Card } from 'react-bootstrap';
+import { Carousel, Card } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
@@ -37,6 +37,9 @@ function LandingPage() {
                             </li>
                             <li className="nav-item">
                                 <Link className="anchor mx-2" to="/aboutus">About Us</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="anchor mx-2" to="/doctorForm">Apply as a doctor</Link>
                             </li>
                         </ul>
                         <Link className="anchor mx-2" to="/subscription">Sign Up</Link>

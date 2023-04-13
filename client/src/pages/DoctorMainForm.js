@@ -33,8 +33,7 @@ function DoctorMainForm() {
 
     const bodydata = {
       userId: uniqid,
-      firstName: values['firstName'],
-      lastName: values['lastName'],
+      name: values['firstName'] + ' ' +values['lastName'],
       email: values['email'],
       phoneNumber: values['phoneNumber'],
       website: values['website'],

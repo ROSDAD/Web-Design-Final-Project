@@ -89,12 +89,20 @@ router.post("/apply-doctor-account", async (req, res) => {
     // console.log("inside ")
     // console.log(req.body.bodydata.firstName)
     // const newdoctor = new Doctor({ ...req.body, status: "pending" });
+
+    const userExists = await Doctor.findOne({ email: req.body.bodydata.email });
+    if (userExists) {
+      return res
+        .status(200)
+        .send({ message: "Doctor already exists", success: false });
+    }
+
     const password = req.body.bodydata.password;
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
     req.body.bodydata.password = hashedPassword;
     console.log(req.body.bodydata.password)
-    
+
 
     //Doctor table insert
     const newdoctor = new Doctor(req.body.bodydata);
@@ -237,7 +245,7 @@ router.post("/book-appointment", authMiddleware, async (req, res) => {
     const newAppointment = new Appointment(req.body);
     await newAppointment.save();
     //pushing notification to doctor based on his userid
-    const user = await User.findOne({userId : req.body.doctorInfo.userId });
+    const user = await User.findOne({ userId: req.body.doctorInfo.userId });
     user.unseenNotifications.push({
       type: "new-appointment-request",
       message: `A new appointment request has been made by ${req.body.userInfo.name}`,
@@ -309,4 +317,5 @@ router.get("/get-appointments-by-user-id", authMiddleware, async (req, res) => {
     });
   }
 });
+
 module.exports = router;

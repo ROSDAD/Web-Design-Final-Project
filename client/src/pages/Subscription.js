@@ -418,23 +418,6 @@ function Subscription() {
                                     Individual
                                 </label>
                             </div>
-                            <div className="form-check form-check-inline">
-                                <input
-                                    className="form-check-input"
-                                    type="radio"
-                                    name="subscriptionType"
-                                    id="familyMembership"
-                                    value="family"
-                                    checked={subscriptionType === 'family'}
-                                    onChange={handleSubscriptionChange}
-                                />
-                                <label className="form-check-label" htmlFor="familyMembership">
-                                    Family
-                                </label>
-                            </div>
-                            <button type="button" className="btn btn-primary corporate-button">
-                                Corporate Plans?
-                            </button>
                             <div
                                 className="position-fixed bottom-0 end-0 p-3"
                                 style={{ zIndex: 1 }}

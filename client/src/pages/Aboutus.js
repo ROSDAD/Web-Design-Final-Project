@@ -86,6 +86,9 @@ function Aboutus() {
               <li className="nav-item">
                 <Link className="anchor mx-2" to="/aboutus">About Us</Link>
               </li>
+              <li className="nav-item">
+                <Link className="anchor mx-2" to="/doctorForm">Apply as a doctor</Link>
+              </li>
             </ul>
             <Link className="anchor mx-2" to="/subscription">Sign Up</Link>
             <button className="btn btn-primary mx-sm-3 mt-3 mt-sm-0 login-btn" onClick={handleClick}>
