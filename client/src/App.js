@@ -42,6 +42,14 @@ function App() {
 
         <Toaster position="top-center" reverseOrder={false} />
         <Routes>
+        <Route
+            path="/doctor/appointments/profile/:appointmentId"
+            element={
+              <ProtectedRoute>
+                <Appointments />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/login"
             element={

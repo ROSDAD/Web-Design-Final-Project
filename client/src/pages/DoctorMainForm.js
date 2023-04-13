@@ -7,9 +7,6 @@ import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 
-
-
-
 function DoctorMainForm() {
 
   const dispatch = useDispatch();

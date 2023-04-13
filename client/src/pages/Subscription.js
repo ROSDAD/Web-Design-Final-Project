@@ -350,19 +350,6 @@ function Subscription() {
                                         Patient
                                     </label>
                                 </div>
-                                <div className="form-check form-check-inline">
-                                    <input
-                                        type="radio"
-                                        id="doctor"
-                                        name="role"
-                                        value="doctor"
-                                        className="form-check-input"
-                                        required
-                                    />
-                                    <label htmlFor="doctor" className="form-check-label">
-                                        Doctor
-                                    </label>
-                                </div>
                                 <div className="valid-feedback">Looks good!</div>
                                 <div className="invalid-feedback">Please select a role.</div>
                             </div>

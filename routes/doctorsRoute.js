@@ -75,6 +75,28 @@ router.get(
     }
   }
 );
+router.post(
+  "/get-appointments-by-appointment-id",
+  authMiddleware,
+  async (req, res) => {
+    try {
+      
+      const appointments = await Appointment.find({ _id: req.body.appId });
+      res.status(200).send({
+        message: req.body.appId,
+        success: true,
+        data: appointments,
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({
+        message: "Error fetching appointments",
+        success: false,
+        error,
+      });
+    }
+  }
+);
 
 router.post("/change-appointment-status", authMiddleware, async (req, res) => {
   try {
