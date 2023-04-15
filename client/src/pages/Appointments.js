@@ -5,6 +5,7 @@ import { showLoading, hideLoading } from "../redux/alertsSlice";
 import axios from "axios";
 import { Table } from "antd";
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 function Appointments() {
   const [appointments, setAppointments] = useState([]);
@@ -60,6 +61,19 @@ function Appointments() {
     {
         title: "Status",
         dataIndex: "status",
+    },
+    {
+        title: "Profile",
+        dataIndex: "profile",
+        render:(text, record) => (
+          <div className="d-flex">
+          {record.status === "approved" && (
+            <Link className="anchor mx-2" to={ "/user/appointments/profile/"+ record._id }>
+              View
+            </Link>
+          )}
+        </div>
+        )
     }
   ];
   useEffect(() => {

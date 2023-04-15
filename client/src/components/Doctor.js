@@ -6,7 +6,7 @@ function Doctor({ doctor }) {
   return (
     <div
       className="card p-2 cursor-pointer"
-      onClick={() => navigate(`/book-appointment/${doctor._id}`)}
+      onClick={() => navigate(`/book-appointment/${doctor.userId}`)}
     >
       <h1 className="card-title">
         {doctor.firstName} {doctor.lastName}

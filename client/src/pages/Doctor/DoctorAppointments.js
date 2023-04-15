@@ -14,6 +14,7 @@ function DoctorAppointments() {
   const getAppointmentsData = async () => {
     try {
       dispatch(showLoading());
+      console.log(localStorage.getItem("token"))
       const resposne = await axios.get(
         "/api/doctor/get-appointments-by-doctor-id",
         {

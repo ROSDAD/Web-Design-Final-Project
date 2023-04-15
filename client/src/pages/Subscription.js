@@ -454,8 +454,8 @@ function Subscription() {
                                 <label htmlFor="membershipPlanSelect">Subscription Plan: </label>
                                 <select className="form-control" id="membershipPlanSelect" name="subscriptionPlan" required>
                                     <option selected disabled value>Choose a Plan</option>
-                                    <option>Basic</option>
-                                    <option>Premium</option>
+                                    <option>Basic - $80</option>
+                                    <option>Premium - $100</option>
                                 </select>
                                 <div className="valid-feedback">
                                     Looks good!
