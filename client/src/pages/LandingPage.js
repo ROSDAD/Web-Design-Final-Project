@@ -131,7 +131,7 @@ function LandingPage() {
                             <div className="card service-card">
                                 <div className="card-body">
                                     <img src={require("../images/videocall.jpg")} alt="" className="img-fluid rounded-circle w-50 mb-3" />
-                                    <h3>Video consultaion</h3>
+                                    <h3>Video consultation</h3>
                                     <p>Connect with the highly talented doctors accross the globe and get your queries resolved
                                         within minutes</p>
                                 </div>
@@ -166,9 +166,9 @@ function LandingPage() {
 
             <br />
             <br />
-            <div class="container-fluid w-75 section">
+            <div class="container-fluid w-50  section">
                 <h1 id="membership-title" class="col text-center">Our membership plans <span></span></h1>
-                <ul class="nav nav-pills mb-3 flex-row justify-content-center" id="pills-tab" role="tablist">
+                <ul class="nav nav-pills mb-3  flex-row justify-content-center" id="pills-tab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="pills-personal-plan-tab" data-bs-toggle="pill"
                             data-bs-target="#personal-plan" type="button" role="tab" aria-controls="pills-personal-plan"
@@ -196,15 +196,15 @@ function LandingPage() {
                                 <hr />
                                 <div class="card-body">
                                     <ul>
-                                        <li><img class="img-fluid" src={require("../images/circle-check-regular.svg")} />2 Appointments per
+                                        <li><img class="img-fluid"  />2 Appointments per
                                             month</li>
-                                        <li><img class="img-fluid" src={require("../images/circle-check-regular.svg")} />Emergency services
+                                        <li><img class="img-fluid"  />Emergency services
                                         </li>
-                                        <li><img class="img-fluid" src={require("../images/circle-check-regular.svg")} />Emergency
+                                        <li><img class="img-fluid"  />Emergency
                                             Vaccinations</li>
-                                        <li><img class="img-fluid" src={require("../images/circle-check-regular.svg")} />Free Monthly check
+                                        <li><img class="img-fluid"  />Free Monthly check
                                             ups</li>
-                                        <li><img class="img-fluid" src={require("../images/circle-check-regular.svg")} />Acess to the
+                                        <li><img class="img-fluid"  />Acess to the
                                             healthboard</li>
                                     </ul>
                                 </div>
@@ -221,15 +221,15 @@ function LandingPage() {
                                 <hr />
                                 <div class="card-body">
                                     <ul>
-                                        <li><img class="img-fluid" src={require("../images/circle-check-regular.svg")} />4 Appointments per
+                                        <li><img class="img-fluid"  />4 Appointments per
                                             month</li>
-                                        <li><img class="img-fluid" src={require("../images/circle-check-regular.svg")} />Limited Insurance
+                                        <li><img class="img-fluid"  />Limited Insurance
                                             accepted</li>
-                                        <li><img class="img-fluid" src={require("../images/circle-check-regular.svg")} />2+ Free video
+                                        <li><img class="img-fluid"  />2+ Free video
                                             consultaion</li>
-                                        <li><img class="img-fluid" src={require("../images/circle-check-regular.svg")} />Free vaccinations
+                                        <li><img class="img-fluid" />Free vaccinations
                                         </li>
-                                        <li><img class="img-fluid" src={require("../images/circle-check-regular.svg")} />+All bronze perks
+                                        <li><img class="img-fluid"  />+All bronze perks
                                         </li>
                                     </ul>
                                 </div>
@@ -246,15 +246,15 @@ function LandingPage() {
                                 <hr />
                                 <div class="card-body">
                                     <ul>
-                                        <li><img class="img-fluid" src={require("../images/circle-check-regular.svg")} />8 Appointments per
+                                        <li><img class="img-fluid"  />8 Appointments per
                                             month</li>
-                                        <li><img class="img-fluid" src={require("../images/circle-check-regular.svg")} />All Insurance
+                                        <li><img class="img-fluid"  />All Insurance
                                             accepted</li>
-                                        <li><img class="img-fluid" src={require("../images/circle-check-regular.svg")} />4+ Free video
+                                        <li><img class="img-fluid"  />4+ Free video
                                             consultaion</li>
-                                        <li><img class="img-fluid" src={require("../images/circle-check-regular.svg")} />Free Health alerts
+                                        <li><img class="img-fluid"  />Free Health alerts
                                         </li>
-                                        <li><img class="img-fluid" src={require("../images/circle-check-regular.svg")} />+All Gold perks</li>
+                                        <li><img class="img-fluid"  />+All Gold perks</li>
                                     </ul>
                                 </div>
                             </div>
@@ -270,15 +270,15 @@ function LandingPage() {
                                 <hr />
                                 <div class="card-body">
                                     <ul>
-                                        <li><img class="img-fluid" src={require("../images/circle-check-regular.svg")} /> unlimited
+                                        <li><img class="img-fluid"  /> unlimited
                                             Appointments</li>
-                                        <li><img class="img-fluid" src={require("../images/circle-check-regular.svg")} /> Free inhouse
+                                        <li><img class="img-fluid"  /> Free inhouse
                                             Insurance </li>
-                                        <li><img class="img-fluid" src={require("../images/circle-check-regular.svg")} /> unlimited video
+                                        <li><img class="img-fluid"  /> unlimited video
                                             consultaion</li>
-                                        <li><img class="img-fluid" src={require("../images/circle-check-regular.svg")} /> Free Health alerts
+                                        <li><img class="img-fluid"  /> Free Health alerts
                                         </li>
-                                        <li><img class="img-fluid" src={require("../images/circle-check-regular.svg")} /> +All Diamond perks
+                                        <li><img class="img-fluid" /> +All Diamond perks
                                         </li>
                                     </ul>
                                 </div>
@@ -299,15 +299,15 @@ function LandingPage() {
                                 <hr />
                                 <div class="card-body">
                                     <ul>
-                                        <li><img class="img-fluid" src={require("../images/circle-check-regular.svg")} /> 8 Appointments per
+                                        <li><img class="img-fluid"  /> 8 Appointments per
                                             month</li>
-                                        <li><img class="img-fluid" src={require("../images/circle-check-regular.svg")} /> All Insurance
+                                        <li><img class="img-fluid"  /> All Insurance
                                             accepted</li>
-                                        <li><img class="img-fluid" src={require("../images/circle-check-regular.svg")} /> 4 + Free video
+                                        <li><img class="img-fluid"  /> 4 + Free video
                                             consultaion</li>
-                                        <li><img class="img-fluid" src={require("../images/circle-check-regular.svg")} /> Free Health alerts
+                                        <li><img class="img-fluid"  /> Free Health alerts
                                         </li>
-                                        <li><img class="img-fluid" src={require("../images/circle-check-regular.svg")} /> Free vaccinations
+                                        <li><img class="img-fluid"  /> Free vaccinations
                                         </li>
                                     </ul>
                                 </div>
@@ -324,15 +324,15 @@ function LandingPage() {
                                 <hr />
                                 <div class="card-body">
                                     <ul>
-                                        <li><img class="img-fluid" src={require("../images/circle-check-regular.svg")} /> unlimited
+                                        <li><img class="img-fluid"  /> unlimited
                                             Appointments</li>
-                                        <li><img class="img-fluid" src={require("../images/circle-check-regular.svg")} /> Free inhouse
+                                        <li><img class="img-fluid"  /> Free inhouse
                                             Insurance </li>
-                                        <li><img class="img-fluid" src={require("../images/circle-check-regular.svg")} /> unlimited video
+                                        <li><img class="img-fluid"  /> unlimited video
                                             consultaion</li>
-                                        <li><img class="img-fluid" src={require("../images/circle-check-regular.svg")} /> Free Health alerts
+                                        <li><img class="img-fluid"  /> Free Health alerts
                                         </li>
-                                        <li><img class="img-fluid" src={require("../images/circle-check-regular.svg")} /> Free vaccinations
+                                        <li><img class="img-fluid"  /> Free vaccinations
                                         </li>
                                     </ul>
                                 </div>
@@ -351,13 +351,13 @@ function LandingPage() {
                             <h2 class="accordion-header" id="headingOne">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    What is telemedic?
+                                    What is Practo?
                                 </button>
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    Telehealth is the distribution of health-related services and information via electronic
+                                    Practo is the distribution of health-related services and information via electronic
                                     information and telecommunication technologies. It allows long-distance patient and
                                     clinician contact, care, advice, reminders, education, intervention, monitoring, and remote
                                     admissions

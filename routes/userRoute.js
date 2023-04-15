@@ -84,27 +84,42 @@ router.post("/get-user-info-by-id", authMiddleware, async (req, res) => {
   }
 });
 
-router.post("/apply-doctor-account", authMiddleware, async (req, res) => {
+router.post("/apply-doctor-account", async (req, res) => {
   try {
-    const newdoctor = new Doctor({ ...req.body, status: "pending" });
-    await newdoctor.save();
-    const adminUser = await User.findOne({ isAdmin: true });
+    // console.log("inside ")
+    // console.log(req.body.bodydata.firstName)
+    // const newdoctor = new Doctor({ ...req.body, status: "pending" });
+    const password = req.body.bodydata.password;
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+    req.body.bodydata.password = hashedPassword;
+    console.log(req.body.bodydata.password)
+    
 
-    const unseenNotifications = adminUser.unseenNotifications;
-    unseenNotifications.push({
-      type: "new-doctor-request",
-      message: `${newdoctor.firstName} ${newdoctor.lastName} has applied for a doctor account`,
-      data: {
-        doctorId: newdoctor._id,
-        name: newdoctor.firstName + " " + newdoctor.lastName,
-      },
-      onClickPath: "/admin/doctorslist",
-    });
-    await User.findByIdAndUpdate(adminUser._id, { unseenNotifications });
-    res.status(200).send({
-      success: true,
-      message: "Doctor account applied successfully",
-    });
+    //Doctor table insert
+    const newdoctor = new Doctor(req.body.bodydata);
+    await newdoctor.save();
+
+
+    //User table insert
+    const newUser = new User(req.body.bodydata);
+    await newUser.save();
+    // const adminUser = await User.findOne({ isAdmin: true });
+
+    // const unseenNotifications = adminUser.unseenNotifications;
+    // unseenNotifications.push({
+    //   type: "new-doctor-request",
+    //   message: `${newdoctor.firstName} ${newdoctor.lastName} has applied for a doctor account`,
+    //   data: {
+    //     doctorId: newdoctor._id,
+    //     name: newdoctor.firstName + " " + newdoctor.lastName,
+    //   },
+    //   onClickPath: "/admin/doctorslist",
+    // });
+    // await User.findByIdAndUpdate(adminUser._id, { unseenNotifications });
+    res
+      .status(200)
+      .send({ message: "Doctor Created Successfully", success: true });
   } catch (error) {
     console.log(error);
     res.status(500).send({
@@ -114,6 +129,36 @@ router.post("/apply-doctor-account", authMiddleware, async (req, res) => {
     });
   }
 });
+
+
+// router.post("/apply-doctor-account", async (req, res) => {
+//   try {
+//     console.log("start")
+//     const userExists = await User.findOne({ email: req.body.bodydata.email });
+//     if (userExists) {
+//       return res
+//         .status(200)
+//         .send({ message: "User already exists", success: false });
+//     }
+//     const password = req.body.bodydata.password;
+//     const salt = await bcrypt.genSalt(10);
+//     const hashedPassword = await bcrypt.hash(password, salt);
+//     req.body.bodydata.password = hashedPassword;
+//     // req.body = {name:req.body[0],email:req.body[1],password:req.body[2],phone:req.body[3],gender:req.body[4],address:req.body[6],city:req.body[7],zipcode:req.body[8],group:req.body[9],type:req.body[10]};
+//     const newuser = new User(req.body.bodydata);
+//     await newuser.save();
+//     res
+//       .status(200)
+//       .send({ message: "User Created Successfully", success: true });
+//   } catch (error) {
+//     console.log(error);
+//     res
+//       .status(500)
+//       .send({ message: "Error creating user", success: false, error });
+//   }
+// });
+
+
 router.post(
   "/mark-all-notifications-as-seen",
   authMiddleware,
@@ -192,7 +237,7 @@ router.post("/book-appointment", authMiddleware, async (req, res) => {
     const newAppointment = new Appointment(req.body);
     await newAppointment.save();
     //pushing notification to doctor based on his userid
-    const user = await User.findOne({ _id: req.body.doctorInfo.userId });
+    const user = await User.findOne({userId : req.body.doctorInfo.userId });
     user.unseenNotifications.push({
       type: "new-appointment-request",
       message: `A new appointment request has been made by ${req.body.userInfo.name}`,

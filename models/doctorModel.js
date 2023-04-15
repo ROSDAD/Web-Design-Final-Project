@@ -1,45 +1,57 @@
 const mongoose = require("mongoose");
 const doctorSchema = new mongoose.Schema(
   {
+    // _id: {
+    //   type: String,
+    //   required: false,
+    // },
     userId: {
       type: String,
-      required: true,
+      required: false,
     },
     firstName: {
       type: String,
-      required: true,
+      required: false,
+    },
+    email: {
+      type: String,
+      required: false,
     },
     lastName: {
       type: String,
-      required: true,
+      required: false,
     },
     phoneNumber: {
       type: String,
-      required: true,
+      required: false,
     },
     website: {
       type: String,
-      required: true,
+      required: false,
+    },
+    password: {
+      type: String,
+      required: false,
     },
     address: {
       type: String,
-      required: true,
+      required: false,
     },
     specialization: {
       type: String,
-      required: true,
+      required: false,
     },
     experience: {
       type: String,
-      required: true,
+      required: false,
     },
     feePerCunsultation: {
       type: Number,
-      required: true,
+      required: false,
     },
-    timings : {
+    timings: {
       type: Array,
-      required: true,
+      required: false,
     },
     status: {
       type: String,

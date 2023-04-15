@@ -22,9 +22,9 @@ import DoctorAppointments from "./pages/Doctor/DoctorAppointments";
 import Completion from "./pages/Completion";
 import { AppContext } from "./components/AppContext";
 import Aboutus from "./pages/Aboutus";
-import AppointmentsPage from "./pages/AppointmentPage";
+import DoctorMainForm from "./pages/DoctorMainForm";
 import PatientAppointmentPage from "./pages/PatientAppointmentPage";
-
+import AppointmentsPage from "./pages/AppointmentPage";
 function App() {
   const { loading } = useSelector((state) => state.alerts);
   const [global_temp, setMyVariable] = useState([]);
@@ -56,7 +56,7 @@ function App() {
             path="/doctor/appointments/profile/:appointmentId"
             element={
               <ProtectedRoute>
-                <AppointmentsPage />
+                 <AppointmentsPage />
               </ProtectedRoute>
             }
           />
@@ -116,12 +116,22 @@ function App() {
               </ProtectedRoute>
             }
           />
+
+          <Route
+            path="/doctorForm"
+            element={
+              <PublicRoute>
+                <DoctorMainForm/>
+              </PublicRoute>
+            }
+          />
+
           <Route
             path="/apply-doctor"
             element={
-              <ProtectedRoute>
+              <PublicRoute>
                 <ApplyDoctor />
-              </ProtectedRoute>
+              </PublicRoute>
             }
           />
           <Route

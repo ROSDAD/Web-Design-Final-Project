@@ -20,11 +20,6 @@ function Layout({ children }) {
       name: "Appointments",
       path: "/appointments",
       icon: "ri-file-list-line",
-    },
-    {
-      name: "Apply Doctor",
-      path: "/apply-doctor",
-      icon: "ri-hospital-line",
     }
   ];
 

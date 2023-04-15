@@ -1,9 +1,10 @@
 
-import React, { createContext, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from "../components/AppContext";
-import Password from "antd/lib/input/Password";
 import { Link } from "react-router-dom";
+
+
 
 function Subscription() {
     const { global_temp, updateMyVariable } = useContext(AppContext);
@@ -131,7 +132,14 @@ function Subscription() {
         const subscriptionPlan = data.get("subscriptionPlan");
         console.log(global_temp);
         updateMyVariable([name, emailAddress, password, phoneNumber, sex, role, address, city, zipcode, subscriptionType, subscriptionPlan]);
-        navigate("/payment", { state: { name, emailAddress, phoneNumber, sex, role, address, city, zipcode, subscriptionType, subscriptionPlan } });
+
+
+        if (role === 'patient') {
+            navigate("/payment", { state: { name, emailAddress, phoneNumber, sex, role, address, city, zipcode, subscriptionType, subscriptionPlan } });
+        } else {
+            navigate("/apply-doctor", { state: { name, emailAddress, phoneNumber, sex, role, address, city, zipcode, subscriptionType, subscriptionPlan } })
+        }
+
     };
 
     const [subscriptionType, setSubscriptionType] = useState('individual');
@@ -172,6 +180,9 @@ function Subscription() {
                             </li>
                             <li className="nav-item">
                                 <Link className="anchor mx-2" to="/aboutus">About Us</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="anchor mx-2" to="/doctorForm">Apply as a doctor</Link>
                             </li>
                         </ul>
                         <Link className="anchor mx-2" to="/subscription">Sign Up</Link>
@@ -339,24 +350,11 @@ function Subscription() {
                                         Patient
                                     </label>
                                 </div>
-                                <div className="form-check form-check-inline">
-                                    <input
-                                        type="radio"
-                                        id="doctor"
-                                        name="role"
-                                        value="doctor"
-                                        className="form-check-input"
-                                        required
-                                    />
-                                    <label htmlFor="doctor" className="form-check-label">
-                                        Doctor
-                                    </label>
-                                </div>
                                 <div className="valid-feedback">Looks good!</div>
                                 <div className="invalid-feedback">Please select a role.</div>
                             </div>
                             <div className="form-group">
-                                <label htmlFor="address1">Address 1*</label>
+                                <label htmlFor="address1">Address*</label>
                                 <input
                                     type="text"
                                     className={`form-control ${address1Valid ? "is-valid" : "is-invalid"}`}
@@ -473,8 +471,8 @@ function Subscription() {
                                 <label htmlFor="membershipPlanSelect">Subscription Plan: </label>
                                 <select className="form-control" id="membershipPlanSelect" name="subscriptionPlan" required>
                                     <option selected disabled value>Choose a Plan</option>
-                                    <option>Basic</option>
-                                    <option>Premium</option>
+                                    <option>Basic - $80</option>
+                                    <option>Premium - $100</option>
                                 </select>
                                 <div className="valid-feedback">
                                     Looks good!

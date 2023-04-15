@@ -117,7 +117,7 @@ function DoctorForm({ onFinish, initivalValues }) {
 
       <div className="d-flex justify-content-end">
         <Button className="primary-button" htmlType="submit">
-          SUBMIT
+          Submit
         </Button>
       </div>
     </Form>
