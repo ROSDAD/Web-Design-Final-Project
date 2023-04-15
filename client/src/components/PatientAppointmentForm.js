@@ -31,7 +31,7 @@ import {
   MDBTextArea
 } from 'mdb-react-ui-kit';
 
-function AppointmentForm({ onFinish, initivalValues }) {
+function PatientAppointmentForm({ onFinish, initivalValues }) {
     const { user } = useSelector((state) => state.user);
     const params = useParams();
     console.log("top")
@@ -43,45 +43,7 @@ function AppointmentForm({ onFinish, initivalValues }) {
     const [weight, setWeight] = useState(0)
     const [height, setHeight] = useState(0)
     const [note, setNote] = useState("")
-    const updateAppointmentInfo = async (event) => {
-      event.preventDefault();
-    console.log(heartRate)
-    console.log(bloodPressure)
-    console.log(temperature)
-    console.log(weight)
-    console.log(height)
-    console.log(note)
-      try {
-       
-        const response = await axios.post(
-          "/api/doctor/update-vitals",
-          {
-            appId: params.appointmentId,
-            appointmentInfo:{
-              heartRate:heartRate,
-              bloodPressure:bloodPressure,
-              temperature:temperature,
-              weight:weight,
-              height:height,
-              note:note
-            }
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
-  
-        if (response.data.success) {
-          toast.success(response.data.message);
-     
-        }
-      } catch (error) {
-        toast.error("Error booking appointment");
- 
-      }
-    };
+    
   const getAppointmentData = () => {
     console.log("inhere");
     axios
@@ -114,16 +76,12 @@ function AppointmentForm({ onFinish, initivalValues }) {
         console.log(error);
       });
   };
-  // const handleHeartChange = (tags) => (event) => {
-  //   // console.log(tags);
-  //   // console.log(event.target.value);
-
-  //   };
+ 
     useEffect(() => {
     
       getAppointmentData();
     }, [params.appointmentId]);
-    // console.log(appointmentInfo);
+  
 
     
   return (
@@ -175,48 +133,30 @@ function AppointmentForm({ onFinish, initivalValues }) {
                 </MDBRow>
               </MDBCardBody>
             </MDBCard>
-            <form onSubmit={updateAppointmentInfo}>
+           
             <MDBRow>
               <MDBCol md="6">
                 <MDBCard className="mb-4 mb-md-0">
                   <MDBCardBody>
                     
                     <MDBCardText className="mb-4"><span className="text-primary font-italic me-1">Vital Signs</span></MDBCardText>
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Heart Rate</MDBCardText>
-                    <MDBInput id='inpHeartRate' min="0" type='number' value={ heartRate } 
-                    onChange={(value)=>{
-                      
-                      setHeartRate(value.target.value);
-                    }}/>
-
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Blood Pressure</MDBCardText>
-                    <MDBInput id='inpBloodPressure' min="0" type='number' value={ bloodPressure }
-                    onChange={(value)=>{
-                      
-                      setBloodPressure(value.target.value);
-                    }}/>
-
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Temperature</MDBCardText>
-                    <MDBInput id='inpTemperature' min="0" type='number' value={ temperature }
-                    onChange={(value)=>{
-                      
-                      setTemperature(value.target.value);
-                    }}/>
-
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Weight</MDBCardText>
-                    <MDBInput id='inpWeight' min="0" type='number' value={ weight }
-                    onChange={(value)=>{
-                      
-                      setWeight(value.target.value);
-                    }}/>
-
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Height</MDBCardText>
-                    <MDBInput id='inpHeight' min="0" type='number' value={ height }
-                    onChange={(value)=>{
-                      
-                      setHeight(value.target.value);
-                    }}/>
+                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '0.9rem' }}>Heart Rate</MDBCardText>
+                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '1rem' }}>{ heartRate }</MDBCardText>
                     
+                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '0.9rem' }}>Blood Pressure</MDBCardText>
+                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '1rem' }}>{ bloodPressure }</MDBCardText>
+
+                    
+                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '0.9rem' }}>Temperature</MDBCardText>
+                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '1rem' }}>{ temperature }</MDBCardText>
+
+                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '0.9rem' }}>Weight</MDBCardText>
+                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '1rem' }}>{ weight }</MDBCardText>
+
+                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '0.9rem' }}>Height</MDBCardText>
+                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '1rem' }}>{ height }</MDBCardText>
+
+                  
                    
                     
                   </MDBCardBody>
@@ -228,13 +168,9 @@ function AppointmentForm({ onFinish, initivalValues }) {
                   <MDBCardBody>
                     
                     <MDBCardText className="mb-4"><span className="text-primary font-italic me-1">Prescription</span></MDBCardText>
-                    <MDBCardText className="mb-1" style={{ fontSize: '1.25rem' }}>Note</MDBCardText>
-                    <MDBTextArea  id='textAreaExample'  rows={15} value={ note }
-                    onChange={(value)=>{
-                      
-                      setNote(value.target.value);
-                    }}></MDBTextArea>
-                
+                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '0.9rem' }}>Note</MDBCardText>
+                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '1rem' }}>{ note }</MDBCardText>
+                    
                     
                    
                   </MDBCardBody>
@@ -243,9 +179,8 @@ function AppointmentForm({ onFinish, initivalValues }) {
        
               
             </MDBRow>
-            <br/>
-            <MDBBtn type="submit" className='gap-2 col-12 mx-auto' block>Update</MDBBtn>
-            </form>
+          
+            
           </MDBCol>
         </MDBRow>
       </MDBContainer>
@@ -255,4 +190,4 @@ function AppointmentForm({ onFinish, initivalValues }) {
   );
 }
 
-export default AppointmentForm;
+export default PatientAppointmentForm;

@@ -92,11 +92,12 @@ export default function CheckoutForm() {
   };
 
   return (
-    <div id="payment-container">
-      <h1 style={{ "text-align":"center" }}>Pay Now</h1>
-    <form id="payment-form" onSubmit={handleSubmit}>
-      <CardElement id="payment-element" />
-      <button disabled={isProcessing || !stripe || !elements} id="submit">
+    
+     <div id="payment-container"> 
+    <form id="payment-form"  onSubmit={handleSubmit}>
+      
+      <CardElement class="" id="payment-element" />
+      <button class="button-payment" disabled={isProcessing || !stripe || !elements} id="submit">
         <span id="button-text">
           {isProcessing ? "Processing ... " : "Pay now"}
         </span>
@@ -105,5 +106,6 @@ export default function CheckoutForm() {
       {message && <div id="payment-message">{message}</div>}
     </form>
     </div>
+    
   );
 }

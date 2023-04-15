@@ -59,8 +59,10 @@ router.get(
 
   async (req, res) => {
     try {
-      const doctor = await Doctor.findOne({ userId: req.body.userId });
-      const appointments = await Appointment.find({ doctorId: doctor._id });
+      const user = await User.findOne({ _id: req.body.userId });
+      const doctor = await Doctor.findOne({ userId: user.userId });
+      
+      const appointments = await Appointment.find({ doctorId: doctor.userId });
       res.status(200).send({
         message: "Appointments fetched successfully",
         success: true,
@@ -129,5 +131,31 @@ router.post("/change-appointment-status", authMiddleware, async (req, res) => {
     });
   }
 });
+
+router.post("/update-vitals", authMiddleware, async (req, res) => {
+  try {
+    const { appId, appointmentInfo } = req.body;
+    const appointment = await Appointment.findByIdAndUpdate(appId, {
+      appointmentInfo,
+    });
+
+
+    await appointment.save();
+
+    res.status(200).send({
+      message: "Appointment Information updated successfully",
+      success: true
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      message: "Error changing appointment status",
+      success: false,
+      error,
+    });
+  }
+});
+
+
 
 module.exports = router;

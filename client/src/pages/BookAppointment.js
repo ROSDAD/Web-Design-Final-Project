@@ -71,7 +71,15 @@ function BookAppointment() {
       dispatch(hideLoading());
     }
   };
+  function disabledDate(current) {
+    // Disable dates before today's date
+    return current && current < moment().startOf('day');
+  }
 
+  function handleDateChange(value) {
+    setDate(moment(value).format("DD-MM-YYYY"));
+    setIsAvailable(false);
+  }
   const bookNow = async () => {
     setIsAvailable(false);
     try {
@@ -147,13 +155,11 @@ function BookAppointment() {
                 {doctor.website}
               </p>
               <div className="d-flex flex-column pt-2 mt-2">
-                <DatePicker
-                  format="DD-MM-YYYY"
-                  onChange={(value) => {
-                    setDate(moment(value).format("DD-MM-YYYY"));
-                    setIsAvailable(false);
-                  }}
-                />
+                    <DatePicker
+                      format="DD-MM-YYYY"
+                      disabledDate={disabledDate}
+                      onChange={handleDateChange}
+                    />
                 <TimePicker
                   format="HH:mm"
                   className="mt-3"

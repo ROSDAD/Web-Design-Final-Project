@@ -23,6 +23,8 @@ import Completion from "./pages/Completion";
 import { AppContext } from "./components/AppContext";
 import Aboutus from "./pages/Aboutus";
 import DoctorMainForm from "./pages/DoctorMainForm";
+import PatientAppointmentPage from "./pages/PatientAppointmentPage";
+import AppointmentsPage from "./pages/AppointmentPage";
 function App() {
   const { loading } = useSelector((state) => state.alerts);
   const [global_temp, setMyVariable] = useState([]);
@@ -43,10 +45,18 @@ function App() {
         <Toaster position="top-center" reverseOrder={false} />
         <Routes>
         <Route
+            path="/user/appointments/profile/:appointmentId"
+            element={
+              <ProtectedRoute>
+                <PatientAppointmentPage />
+              </ProtectedRoute>
+            }
+          />
+        <Route
             path="/doctor/appointments/profile/:appointmentId"
             element={
               <ProtectedRoute>
-                <Appointments />
+                 <AppointmentsPage />
               </ProtectedRoute>
             }
           />
