@@ -10,6 +10,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
+    noOfAppointment: {
+      type: String,
+      required: false,
+    },
     name: {
       type: String,
       required: false,
@@ -30,7 +34,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
-    
+
     address: {
       type: String,
       required: false,
@@ -51,7 +55,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
-    
+
     isDoctor: {
       type: Boolean,
       default: false,
@@ -67,7 +71,7 @@ const userSchema = new mongoose.Schema(
     unseenNotifications: {
       type: Array,
       default: [],
-    },    
+    },
     firstName: {
       type: String,
       required: false,
@@ -104,7 +108,7 @@ const userSchema = new mongoose.Schema(
       type: Number,
       required: false,
     },
-    timings : {
+    timings: {
       type: Array,
       required: false,
     },

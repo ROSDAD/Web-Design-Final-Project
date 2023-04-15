@@ -130,12 +130,16 @@ function Subscription() {
         const zipcode = data.get("zipcode");
         const subscriptionType = data.get("subscriptionType");
         const subscriptionPlan = data.get("subscriptionPlan");
+
+        const noOfAppointment = subscriptionPlan === 'Basic' ? 5 : 10;
+
         console.log(global_temp);
-        updateMyVariable([name, emailAddress, password, phoneNumber, sex, role, address, city, zipcode, subscriptionType, subscriptionPlan]);
+
+        updateMyVariable([name, emailAddress, password, phoneNumber, sex, role, address, city, zipcode, subscriptionType, subscriptionPlan,noOfAppointment]);
 
 
         if (role === 'patient') {
-            navigate("/payment", { state: { name, emailAddress, phoneNumber, sex, role, address, city, zipcode, subscriptionType, subscriptionPlan } });
+            navigate("/payment", { state: { name, emailAddress, phoneNumber, sex, role, address, city, zipcode, subscriptionType, subscriptionPlan,noOfAppointment } });
         } else {
             navigate("/apply-doctor", { state: { name, emailAddress, phoneNumber, sex, role, address, city, zipcode, subscriptionType, subscriptionPlan } })
         }
