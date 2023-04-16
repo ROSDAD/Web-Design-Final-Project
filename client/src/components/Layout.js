@@ -3,10 +3,22 @@ import "../layout.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Badge } from "antd";
+import moment from "moment";
+import {Container,Row,Col} from 'react-bootstrap';
 
 function Layout({ children }) {
   const [collapsed, setCollapsed] = useState(false);
   const { user } = useSelector((state) => state.user);
+
+
+  const [endDate, setEndDate] = useState(moment().add(29, 'days'));
+
+  const daysLeft = moment.duration(moment(endDate).diff(moment())).asDays().toFixed(2);
+
+  const handleAddDay = () => {
+    const newEndDate = moment(endDate).add(1, 'days');
+    setEndDate(newEndDate);
+  };
 
   const navigate = useNavigate();
 
@@ -52,12 +64,12 @@ function Layout({ children }) {
       name: "Doctors",
       path: "/admin/doctorslist",
       icon: "ri-user-star-line",
-    },
-    {
-      name: "Profile",
-      path: `/user/profile/${user?.userId}`,
-      icon: "ri-user-line",
-    },
+    }
+    // {
+    //   name: "Profile",
+    //   path: `/user/profile/${user?.userId}`,
+    //   icon: "ri-user-line",
+    // },
   ];
 
   const menuToBeRendered = user?.isAdmin ? adminMenu : user?.isDoctor ? doctorMenu : userMenu;
@@ -104,10 +116,19 @@ function Layout({ children }) {
 
           <div className="content">
 
-            <div>
-              Number of appointments Left: {user?.noOfAppointment}
-            </div>
-
+            <Container>
+              <Row>
+                <Col><div >
+                  Number of appointments Left: {user?.noOfAppointment}
+                </div></Col>
+                <Col><div >
+                  Number of days left in subscription: {daysLeft} days
+                </div></Col>
+                <Col><div >
+                  Subscribed Plan:  {user?.type}
+                </div></Col>
+              </Row>
+            </Container>
             <div className="header">
               {collapsed ? (
                 <i
@@ -150,7 +171,9 @@ function Layout({ children }) {
         <div className="d-flex layout">
           <div className="sidebar">
             <div className="sidebar-header">
-              <h1 className="logo">SH</h1>
+              <h1 className="logo">Practo</h1>
+              <hr />
+              <br />
               <h1 className="role">{role}</h1>
             </div>
 

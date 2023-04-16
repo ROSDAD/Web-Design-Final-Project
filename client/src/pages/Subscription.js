@@ -3,6 +3,8 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from "../components/AppContext";
 import { Link } from "react-router-dom";
+import { Container, Row, Col } from 'react-bootstrap';
+
 
 
 
@@ -135,11 +137,11 @@ function Subscription() {
 
         console.log(global_temp);
 
-        updateMyVariable([name, emailAddress, password, phoneNumber, sex, role, address, city, zipcode, subscriptionType, subscriptionPlan,noOfAppointment]);
+        updateMyVariable([name, emailAddress, password, phoneNumber, sex, role, address, city, zipcode, subscriptionType, subscriptionPlan, noOfAppointment]);
 
 
         if (role === 'patient') {
-            navigate("/payment", { state: { name, emailAddress, phoneNumber, sex, role, address, city, zipcode, subscriptionType, subscriptionPlan,noOfAppointment } });
+            navigate("/payment", { state: { name, emailAddress, phoneNumber, sex, role, address, city, zipcode, subscriptionType, subscriptionPlan, noOfAppointment } });
         } else {
             navigate("/apply-doctor", { state: { name, emailAddress, phoneNumber, sex, role, address, city, zipcode, subscriptionType, subscriptionPlan } })
         }

@@ -84,6 +84,7 @@ function BookAppointment() {
     setIsAvailable(false);
     try {
       dispatch(showLoading());
+      console.log("inside ")
       const response = await axios.post(
         "/api/user/book-appointment",
         {
