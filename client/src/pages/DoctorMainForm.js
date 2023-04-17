@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { showLoading, hideLoading } from "../redux/alertsSlice";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 function DoctorMainForm() {
 
@@ -28,6 +28,9 @@ function DoctorMainForm() {
       return Promise.reject(new Error('The two passwords that you entered do not match!'));
     },
   });
+  function handleClick() {
+    navigate('/login');
+}
 
   const onFinish = async (values) => {
 
@@ -66,6 +69,40 @@ function DoctorMainForm() {
 
   return (
     <div>
+      <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: '#08e4ff' }}>
+                <Link className="anchor mx-2" to="/mainPage">
+                    Practo
+                </Link>
+                <button className="navbar-toggler mx-3" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="navbar-collapse">
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav mx-auto">
+                            <li className="nav-item">
+                                <Link className="anchor mx-2" to="/mainPage">Home</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="anchor mx-2" to="/subscription">Subscription</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="anchor mx-2" to="/aboutus">About Us</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="anchor mx-2" to="/doctorForm">Apply as a doctor</Link>
+                            </li>
+                        </ul>
+                        <Link className="anchor mx-2" to="/subscription">Sign Up</Link>
+                        <button className="btn btn-primary mx-sm-3 mt-3 mt-sm-0 login-btn" onClick={handleClick}>
+                            Login
+                        </button>
+                    </div>
+                </div>
+            </nav>
+    <div className="container">
+      <br/>
       <h1 className="page-title">Apply Doctor</h1>
       <hr />
       <Form
@@ -228,6 +265,7 @@ function DoctorMainForm() {
         </div>
       </Form>
     </div >
+    </div>
   );
 }
 export default DoctorMainForm;

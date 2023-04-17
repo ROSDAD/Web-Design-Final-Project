@@ -25,6 +25,8 @@ import Aboutus from "./pages/Aboutus";
 import DoctorMainForm from "./pages/DoctorMainForm";
 import PatientAppointmentPage from "./pages/PatientAppointmentPage";
 import AppointmentsPage from "./pages/AppointmentPage";
+import UserProfile from "./pages/UserProfile";
+import TawkMessengerReact from '@tawk.to/tawk-messenger-react';
 function App() {
   const { loading } = useSelector((state) => state.alerts);
   const [global_temp, setMyVariable] = useState([]);
@@ -35,6 +37,11 @@ function App() {
   };
   return (
     <AppContext.Provider value={{ global_temp, updateMyVariable }}>
+      <div className="App">
+            <TawkMessengerReact
+                propertyId="644392894247f20fefed1be5"
+                widgetId="1gujv8qsh"/>
+        </div>
       <BrowserRouter>
         {loading && (
           <div className="spinner-parent">
@@ -60,6 +67,7 @@ function App() {
               </ProtectedRoute>
             }
           />
+          
           <Route
             path="/login"
             element={
@@ -168,7 +176,14 @@ function App() {
               </ProtectedRoute>
             }
           />
-
+          <Route
+            path="/user/profile/:userId"
+            element={
+              <ProtectedRoute>
+                <UserProfile />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/book-appointment/:doctorId"
             element={

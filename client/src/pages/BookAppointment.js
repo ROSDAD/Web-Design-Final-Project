@@ -128,7 +128,7 @@ function BookAppointment() {
 
             <Col span={8} sm={24} xs={24} lg={8}>
               <img
-                src="https://thumbs.dreamstime.com/b/finger-press-book-now-button-booking-reservation-icon-online-149789867.jpg"
+                src="https://media.istockphoto.com/id/1218429063/vector/book-now-blue-3d-button-with-hand-pointer-clicking-white-background-vector.jpg?s=612x612&w=0&k=20&c=CO0g9JdSzRSL0hBJilmBUMYbPn0VFj4U5ckyx77ZNnQ="
                 alt=""
                 width="100%"
                 height='400'

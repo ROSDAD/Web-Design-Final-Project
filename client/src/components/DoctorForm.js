@@ -4,6 +4,7 @@ import React from "react";
 
 function DoctorForm({ onFinish, initivalValues }) {
   return (
+    <div className="row justify-content-center my-5 form-container" style={{ margin:"300px" }}>
     <Form
       layout="vertical"
       onFinish={onFinish}
@@ -121,6 +122,7 @@ function DoctorForm({ onFinish, initivalValues }) {
         </Button>
       </div>
     </Form>
+    </div>
   );
 }
 

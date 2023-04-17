@@ -50,7 +50,7 @@ function LandingPage() {
                 </div>
             </nav>
 
-            <div class="row">
+            <div class="row" style={{ width:"100%"}}>
                 <div class="col-6">
                     <br />
                     <br />
@@ -84,7 +84,7 @@ function LandingPage() {
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="col-12 col-xxl-6 my-5 d-flex flex-column align-items-center justify-content-center">
+                    <div class="col-10 pt-5 my-6 d-flex flex-column align-items-center justify-content-center">
                         <div class="my-2 my-sm-0">
                             <p class="d-inline fs-1 text-primary fw-bolder">One Stop</p>
                             <p class="d-inline fs-1">&nbsp;For All Your Health Needs!!</p>

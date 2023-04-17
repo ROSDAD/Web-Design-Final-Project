@@ -69,8 +69,8 @@ label{
   border-radius: 0 !important;
 }
 .primary-button{
-  background-color: #005555 !important;
-  border-color: #005555 !important;
+  background-color: #0d6efd !important;
+  border-color: #0d6efd!important;
   height: 40px !important;
   width: 100% !important;
   color: white !important;
@@ -108,7 +108,7 @@ p{
    display: flex;
    align-items: center;
    justify-content: center;
-   background-color: #005555;
+   background-color: #fff;
 }
 .authentication-form{
   width: 400px;
@@ -117,7 +117,7 @@ p{
 .authentication .card-title{
   font-size: 1.5rem;
   font-weight: bold;
-  background-color: orangered;
+  background-color: #0d6efd;
   color: white !important;
   max-width: max-content !important;
   padding: 7px 15px;
