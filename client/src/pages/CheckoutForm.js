@@ -64,7 +64,7 @@ export default function CheckoutForm() {
       
     }else{
       console.log("ALL GOOD");
-      const bodydata = {name:global_temp[0],email:global_temp[1],password:global_temp[2],phone:global_temp[3],gender:global_temp[4],address:global_temp[6],city:global_temp[7],zipcode:global_temp[8],group:global_temp[9],type:global_temp[10]};
+      const bodydata = {name:global_temp[0],email:global_temp[1],password:global_temp[2],phone:global_temp[3],gender:global_temp[4],address:global_temp[6],city:global_temp[7],zipcode:global_temp[8],group:global_temp[9],type:global_temp[10],noOfAppointment:global_temp[11]};
       try {
         fetch('/api/user/register', {
           method: 'POST',

@@ -36,7 +36,7 @@ function Appointments() {
       dataIndex: "name",
       render: (text, record) => (
         <span>
-          {record.doctorInfo.firstName} {record.doctorInfo.lastName}
+          {record.doctorInfo.name}
         </span>
       ),
     },

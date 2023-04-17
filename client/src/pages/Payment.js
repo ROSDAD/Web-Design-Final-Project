@@ -5,11 +5,11 @@ import { React, createContext, useState, useEffect,useContext } from "react";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
 import { loadStripe } from "@stripe/stripe-js";
-import { AppContext } from '../components/AppContext';
+import { AppContext } from '../components/AppContext'; 
 function Payment() {
     const { global_temp, updateMyVariable } = useContext(AppContext);
     const location = useLocation();
-    const { name, emailAddress, phoneNumber, sex, role, address, city, zipcode, subscriptionType, subscriptionPlan  } = location.state;
+    const { name, emailAddress, phoneNumber, sex, role, address, city, zipcode, subscriptionType, subscriptionPlan, noOfAppointment } = location.state;
     const [stripePromise, setStripePromise] = useState(null);
     const [clientSecret, setClientSecret] = useState("");
     const [amountToBe,setAmountToBe] = useState(100);

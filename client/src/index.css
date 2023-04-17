@@ -8,7 +8,7 @@
 input{
   border-radius: 2px !important;
   border: 1px solid rgba(128, 128, 128, 0.521) !important;
-  height: 40px !important;
+  /* height: 40px !important; */
 }
 input:focus , .ant-picker{
   outline: none !important;
@@ -175,4 +175,7 @@ p{
   width: 60%;
   
   padding: 10px;
+}
+.form-check-input{
+  width:100px;
 }

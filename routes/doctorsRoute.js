@@ -7,7 +7,8 @@ const User = require("../models/userModel");
 
 router.post("/get-doctor-info-by-user-id", authMiddleware, async (req, res) => {
   try {
-    const doctor = await Doctor.findOne({ userId: req.body.userId });
+    const user = await User.findOne({ _id: req.body.userId });
+    const doctor = await Doctor.findOne({ userId: user.userId });
     res.status(200).send({
       success: true,
       message: "Doctor info fetched successfully",
@@ -61,7 +62,7 @@ router.get(
     try {
       const user = await User.findOne({ _id: req.body.userId });
       const doctor = await Doctor.findOne({ userId: user.userId });
-      
+
       const appointments = await Appointment.find({ doctorId: doctor.userId });
       res.status(200).send({
         message: "Appointments fetched successfully",
@@ -83,7 +84,7 @@ router.post(
   authMiddleware,
   async (req, res) => {
     try {
-      
+
       const appointments = await Appointment.find({ _id: req.body.appId });
       res.status(200).send({
         message: req.body.appId,

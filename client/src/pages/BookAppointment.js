@@ -84,6 +84,7 @@ function BookAppointment() {
     setIsAvailable(false);
     try {
       dispatch(showLoading());
+      console.log("inside ")
       const response = await axios.post(
         "/api/user/book-appointment",
         {
@@ -121,7 +122,7 @@ function BookAppointment() {
       {doctor && (
         <div>
           <h1 className="page-title">
-            {doctor.firstName} {doctor.lastName}
+            {doctor.name}
           </h1>
           <hr />
           <Row gutter={20} className="mt-5" align="middle">

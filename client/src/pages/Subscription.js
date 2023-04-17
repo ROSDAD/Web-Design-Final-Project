@@ -3,6 +3,8 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from "../components/AppContext";
 import { Link } from "react-router-dom";
+import { Container, Row, Col } from 'react-bootstrap';
+
 
 
 
@@ -130,12 +132,16 @@ function Subscription() {
         const zipcode = data.get("zipcode");
         const subscriptionType = data.get("subscriptionType");
         const subscriptionPlan = data.get("subscriptionPlan");
+
+        const noOfAppointment = subscriptionPlan === 'Basic' ? 5 : 10;
+
         console.log(global_temp);
-        updateMyVariable([name, emailAddress, password, phoneNumber, sex, role, address, city, zipcode, subscriptionType, subscriptionPlan]);
+
+        updateMyVariable([name, emailAddress, password, phoneNumber, sex, role, address, city, zipcode, subscriptionType, subscriptionPlan, noOfAppointment]);
 
 
         if (role === 'patient') {
-            navigate("/payment", { state: { name, emailAddress, phoneNumber, sex, role, address, city, zipcode, subscriptionType, subscriptionPlan } });
+            navigate("/payment", { state: { name, emailAddress, phoneNumber, sex, role, address, city, zipcode, subscriptionType, subscriptionPlan, noOfAppointment } });
         } else {
             navigate("/apply-doctor", { state: { name, emailAddress, phoneNumber, sex, role, address, city, zipcode, subscriptionType, subscriptionPlan } })
         }
@@ -291,15 +297,15 @@ function Subscription() {
                                 </div>
                             </div>
                             <div className="form-group">
-                                <label>Sex:</label>
-                                <div className="form-check form-check-inline">
+                                <label>Sex: </label>
+                                <div className="form-check form-check-inline" style={{"margin-left":"20px"}}>
                                     <input
                                         type="radio"
                                         id="male"
                                         name="sex"
                                         value="male"
                                         className="form-check-input"
-                                        required
+                                        required 
                                     />
                                     <label htmlFor="male" className="form-check-label">
                                         Male
@@ -337,7 +343,7 @@ function Subscription() {
 
                             <div className="form-group">
                                 <label>Role:</label>
-                                <div className="form-check form-check-inline">
+                                <div className="form-check form-check-inline" style={{"margin-left":"20px"}}>
                                     <input
                                         type="radio"
                                         id="patient"
@@ -403,7 +409,8 @@ function Subscription() {
                                 <div className="invalid-feedback">Please enter a valid 5-digit zipcode.</div>
                             </div>
                             <label htmlFor="individualMembership">Subscription Type: </label>
-                            <div className="form-check form-check-inline">
+                            
+                            <div className="form-check form-check-inline" style={{"margin-left":"20px"}}>
                                 <input
                                     className="form-check-input"
                                     type="radio"
@@ -464,7 +471,15 @@ function Subscription() {
                                     Please select at least one plan
                                 </div>
                             </div>
-                            <button type="submit" className="btn btn-primary">Submit</button>
+                            <br/>
+                            <div class="container">
+                            <div class="row">
+                                <div class="col text-center">
+                                <button type="submit" className="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                            </div>
+                            
                         </form>
                     </div>
                 </div >

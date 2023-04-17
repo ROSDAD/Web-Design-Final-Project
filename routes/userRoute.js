@@ -95,7 +95,7 @@ router.post("/apply-doctor-account", async (req, res) => {
     const userExists = await Doctor.findOne({ email: req.body.bodydata.email });
     if (userExists) {
       return res
-        .status(200)
+        .status(404)
         .send({ message: "Doctor already exists", success: false });
     }
 
@@ -139,34 +139,6 @@ router.post("/apply-doctor-account", async (req, res) => {
     });
   }
 });
-
-
-// router.post("/apply-doctor-account", async (req, res) => {
-//   try {
-//     console.log("start")
-//     const userExists = await User.findOne({ email: req.body.bodydata.email });
-//     if (userExists) {
-//       return res
-//         .status(200)
-//         .send({ message: "User already exists", success: false });
-//     }
-//     const password = req.body.bodydata.password;
-//     const salt = await bcrypt.genSalt(10);
-//     const hashedPassword = await bcrypt.hash(password, salt);
-//     req.body.bodydata.password = hashedPassword;
-//     // req.body = {name:req.body[0],email:req.body[1],password:req.body[2],phone:req.body[3],gender:req.body[4],address:req.body[6],city:req.body[7],zipcode:req.body[8],group:req.body[9],type:req.body[10]};
-//     const newuser = new User(req.body.bodydata);
-//     await newuser.save();
-//     res
-//       .status(200)
-//       .send({ message: "User Created Successfully", success: true });
-//   } catch (error) {
-//     console.log(error);
-//     res
-//       .status(500)
-//       .send({ message: "Error creating user", success: false, error });
-//   }
-// });
 
 
 router.post(
@@ -247,13 +219,22 @@ router.post("/book-appointment", authMiddleware, async (req, res) => {
     const newAppointment = new Appointment(req.body);
     await newAppointment.save();
     //pushing notification to doctor based on his userid
-    const user = await User.findOne({ userId: req.body.doctorInfo.userId });
-    user.unseenNotifications.push({
+    const user = await User.findOne({ email: req.body.userInfo.email});
+    if(req.body.userInfo.noOfAppointment <=0){
+      return res
+        .status(400)
+        .send({ message: "Appointments are completed as per the subscription", success: false });
+    }
+    user.noOfAppointment = req.body.userInfo.noOfAppointment - 1;
+    console.log(user)
+    await user.save();
+    const doctor = await User.findOne({ userId: req.body.doctorInfo.userId });
+    doctor.unseenNotifications.push({
       type: "new-appointment-request",
       message: `A new appointment request has been made by ${req.body.userInfo.name}`,
       onClickPath: "/doctor/appointments",
     });
-    await user.save();
+    await doctor.save();
     res.status(200).send({
       message: "Appointment booked successfully",
       success: true,

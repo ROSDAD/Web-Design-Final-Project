@@ -52,6 +52,8 @@ function Profile() {
   const getDoctorData = async () => {
     try {
       dispatch(showLoading());
+      console.log("In getDoctor Data")
+      console.log(params.userId)
       const response = await axios.post(
         "/api/doctor/get-doctor-info-by-user-id",
         {
