@@ -1,87 +1,165 @@
-import { Button, Col, Form, Input, Row, TimePicker } from "antd";
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Layout from "../components/Layout";
+import { Col, Row } from "antd";
+import Doctor from "../components/Doctor";
 import { useDispatch, useSelector } from "react-redux";
 import { showLoading, hideLoading } from "../redux/alertsSlice";
-import { toast } from "react-hot-toast";
-import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
-import SubscriptionForm from "../components/SubscriptionForm";
-import moment from "moment";
+import { useParams} from "react-router-dom";
+import {
+  MDBCol,
+  MDBContainer,
+  MDBRow,
+  MDBCard,
+  MDBCardText,
+  MDBCardBody,
+  MDBCardImage,
+  MDBBtn,
+  MDBBreadcrumb,
+  MDBBreadcrumbItem,
+  MDBProgress,
+  MDBProgressBar,
+  MDBIcon,
+  MDBListGroup,
+  MDBListGroupItem,
+  MDBInput,
+  MDBTextArea
+} from 'mdb-react-ui-kit';
+function UserProfile() {
 
-function Profile() {
-  const { user } = useSelector((state) => state.user);
-  const params = useParams();
-  const [doctor, setDoctor] = useState(null);
+  const [user, setUser] = useState({});
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const onFinish = async (values) => {
+  const params = useParams();
+  const getData = async () => {
+
     try {
-      dispatch(showLoading());
-      const response = await axios.post(
-        "/api/doctor/update-doctor-profile",
-        {
-          ...values,
-          userId: user._id,
-          timings: [
-            moment(values.timings[0]).format("HH:mm"),
-            moment(values.timings[1]).format("HH:mm"),
-          ],
+      
+      const response = await axios.post("/api/user/get-user-info-by-id", 
+      {
+        userId: params.userId,
+      },
+      {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
         },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
-      dispatch(hideLoading());
+      });
+      console.log(response.data)
       if (response.data.success) {
-        toast.success(response.data.message);
-        navigate("/");
-      } else {
-        toast.error(response.data.message);
+        setUser(response.data.data);
+        console.log(response.data.data)
       }
     } catch (error) {
-      dispatch(hideLoading());
-      toast.error("Something went wrong");
+     
     }
-  };
-
-  const getDoctorData = async () => {
-    try {
-      dispatch(showLoading());
-      const response = await axios.post(
-        "/api/doctor/get-doctor-info-by-user-id",
-        {
-          userId: params.userId,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
-
-      dispatch(hideLoading());
-      if (response.data.success) {
-        setDoctor(response.data.data);
-      }
-    } catch (error) {
-      console.log(error);
-      dispatch(hideLoading());
-    }
+    
   };
 
   useEffect(() => {
-    getDoctorData();
-  }, []);
+    console.log("in useffect");
+    getData();
+  }, [params.userId]);
+  console.log(user)
   return (
+    // <h1>Hi</h1>
     <Layout>
-      <h1 className="page-title">User Profile</h1>
-      <hr />
-      {doctor && <SubscriptionForm onFinish={onFinish} initivalValues={doctor} />}
+    <section style={{ backgroundColor: '#eee' }}>
+      <MDBContainer className="py-5">
+        
+
+        <MDBRow>
+          
+          <MDBCol lg="12">
+            <MDBCard className="mb-4">
+              <MDBCardBody>
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Full Name</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">{ user && user.name }</MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Email</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">{ user && user.email }</MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Contact</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">{ user && user.phone }</MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+               
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Address</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">{ user && user.address }</MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+               
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>City</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">{ user && user.city }</MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+               
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Zipcode</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">{ user && user.zipcode }</MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+               
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Group</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">{ user && user.group }</MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+               
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Subscription Type</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">{ user && user.type }</MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+                
+              </MDBCardBody>
+            </MDBCard>
+           
+           
+          
+            
+          </MDBCol>
+        </MDBRow>
+      </MDBContainer>
+    </section>
     </Layout>
   );
 }
 
-export default Profile;
+export default UserProfile;

@@ -297,15 +297,15 @@ function Subscription() {
                                 </div>
                             </div>
                             <div className="form-group">
-                                <label>Sex:</label>
-                                <div className="form-check form-check-inline">
+                                <label>Sex: </label>
+                                <div className="form-check form-check-inline" style={{"margin-left":"20px"}}>
                                     <input
                                         type="radio"
                                         id="male"
                                         name="sex"
                                         value="male"
                                         className="form-check-input"
-                                        required
+                                        required 
                                     />
                                     <label htmlFor="male" className="form-check-label">
                                         Male
@@ -343,7 +343,7 @@ function Subscription() {
 
                             <div className="form-group">
                                 <label>Role:</label>
-                                <div className="form-check form-check-inline">
+                                <div className="form-check form-check-inline" style={{"margin-left":"20px"}}>
                                     <input
                                         type="radio"
                                         id="patient"
@@ -409,7 +409,8 @@ function Subscription() {
                                 <div className="invalid-feedback">Please enter a valid 5-digit zipcode.</div>
                             </div>
                             <label htmlFor="individualMembership">Subscription Type: </label>
-                            <div className="form-check form-check-inline">
+                            
+                            <div className="form-check form-check-inline" style={{"margin-left":"20px"}}>
                                 <input
                                     className="form-check-input"
                                     type="radio"
@@ -470,7 +471,15 @@ function Subscription() {
                                     Please select at least one plan
                                 </div>
                             </div>
-                            <button type="submit" className="btn btn-primary">Submit</button>
+                            <br/>
+                            <div class="container">
+                            <div class="row">
+                                <div class="col text-center">
+                                <button type="submit" className="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                            </div>
+                            
                         </form>
                     </div>
                 </div >

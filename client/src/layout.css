@@ -12,7 +12,7 @@
     margin-top:-20px ;
 }
 .sidebar{
-    background-color: #005555;
+    background-color: #0d6efd;
     border-radius: 5px;
     box-shadow: 0 0 2px gray;
     margin-right: 20px;
@@ -69,7 +69,7 @@
 
 .active-menu-item{
     color: white;
-    background-color: #013737;
+    background-color: #0d1f49;
     padding: 5px;
     border-radius: 5px;
 }
